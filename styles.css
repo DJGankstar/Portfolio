@@ -286,7 +286,6 @@ nav ul li a:hover::after{
 
 .btn:hover{
     background: #ff004f;
-
 }
 
 /* Contact */
@@ -326,7 +325,55 @@ nav ul li a:hover::after{
     transform: translateY(-5px);
 }
 
-.btn.btn2{
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn.btn2,
+form .btn2 {
     display: inline-block;
     background: #ff004f;
+    padding: 14px 60px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer; 
+    transition: transform 0.3s;
+    align-self: center; /* Center the button */
+}
+
+.btn.btn2:hover,
+form .btn2:hover {
+    transform: scale(1.1);
+}
+
+form input, form textarea{
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #262626;
+    padding: 15px;
+    margin: 15px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 6px;
+}
+
+.copyright{
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    background: #262626;
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+
+/* Responsive */
+@media only screen and (max-width: 600px){
+    #header{
+        background-image: url(images/phone-background.png);
+    }
 }
