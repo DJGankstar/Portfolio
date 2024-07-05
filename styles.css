@@ -419,4 +419,17 @@ nav .fa-solid{
         left: 25px;
         cursor: pointer;
     }
+
+    .about-col-1, .about-col-2{
+        flex-basis: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .contact-left, .contact-right{
+        flex-basis: 100%;
+    }
+
+    .contact-left{
+        text-align: center;
+    }
 }
