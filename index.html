@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/b115f2222f.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div id="overlay"></div>
     <div id="header">
         <div class="container">
             <nav>
@@ -192,6 +193,7 @@
     var links = document.getElementsByClassName("links");
     var tabContents = document.getElementsByClassName("tab-contents");
     var sideMenu = document.getElementById("sideMenu");
+    var overlay = document.getElementById("overlay");
 
     function opentab(tabName) {
         // Remove active-link class from all links
@@ -213,10 +215,12 @@
 
     function openMenu(){
         sideMenu.style.right = "0";
+        overlay.style.display = "block"; // Show the overlay
     }
 
     function closeMenu(){
         sideMenu.style.right = "-250px";
+        overlay.style.display = "none"; // Hide the overlay
     }
 </script>
 </body>
