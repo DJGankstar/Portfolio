@@ -12,13 +12,15 @@
         <div class="container">
             <nav>
                 <img src="images/logo.png" class = "logo">
-                <ul>
+                <ul id = "sideMenu">
                     <li><a href = "#">Home</a></li>
                     <li><a href = "#">About</a></li>
                     <li><a href = "#">Services</a></li>
                     <li><a href = "#">Portfolio</a></li>
                     <li><a href = "#">Contact</a></li>
+                    <i class="fa-solid fa-xmark" onclick = "closeMenu()"></i>
                 </ul>
+                <i class="fa-solid fa-burger" onclick = "openMenu()"></i>
             </nav>
             <div class="header-text">
                 <p>UI/UX Designer</p>
@@ -189,6 +191,7 @@
    <script>
     var links = document.getElementsByClassName("links");
     var tabContents = document.getElementsByClassName("tab-contents");
+    var sideMenu = document.getElementById("sideMenu");
 
     function opentab(tabName) {
         // Remove active-link class from all links
@@ -206,6 +209,14 @@
 
         // Add active-tab class to the clicked tab content
         document.getElementById(tabName).classList.add("active-tab");
+    }
+
+    function openMenu(){
+        sideMenu.style.right = "0";
+    }
+
+    function closeMenu(){
+        sideMenu.style.right = "-250px";
     }
 </script>
 </body>
