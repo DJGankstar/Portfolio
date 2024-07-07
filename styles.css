@@ -407,6 +407,7 @@ body *:not(#overlay):not(#sideMenu) {
     .header-text h1 {
         font-size: 30px;
         padding-top: 10px;
+        
     }
 
     .header-text {
