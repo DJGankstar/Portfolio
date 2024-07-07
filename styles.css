@@ -464,3 +464,14 @@ body *:not(#overlay):not(#sideMenu) {
     margin-top: -40px;
     display: block;
 }
+
+/* Change the highlight color */
+::selection {
+    background-color: #00FFFF; /* Soft cyan */
+    color: #080808; /* Dark text color to contrast with the light cyan background */
+}
+
+.contact-left p:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
