@@ -163,8 +163,9 @@
         <div class="row">
             <div class="contact-left">
                 <h1>Contact Me</h1>
-                <p id="email"><i class="fa-solid fa-paper-plane"></i> mobeenk89@gmail.com</p>
-                <p id="phone"><i class="fa-solid fa-phone"></i> 0412381611</p>
+                <p id="email" class="clickable"><i class="fa-solid fa-paper-plane"></i> mobeenk89@gmail.com</p>
+                <p id="phone" class="clickable"><i class="fa-solid fa-phone"></i> 0412381611</p>
+                <span id="copy-message" style="display: none;"></span>
                 <div class="social-icons">
                     <a href="#"><i class="fa-brands fa-facebook"></i></a>
                     <a href="#"><i class="fa-brands fa-twitter"></i></a>
@@ -228,20 +229,32 @@
         overlay.style.display = "none"; // Hide the overlay
     }
 
-    function copyToClipboard(text) {
+    function copyToClipboard(text, element) {
         navigator.clipboard.writeText(text).then(() => {
-            alert('Copied to clipboard');
+            showCopyMessage(element);
         }, err => {
             console.error('Could not copy text: ', err);
         });
     }
 
+    function showCopyMessage(element) {
+        const copyMessage = document.getElementById('copy-message');
+        copyMessage.innerText = element.id === 'email' ? 'The email has been copied to your clipboard' : 'The phone number has been copied to your clipboard';
+        copyMessage.style.display = 'block';
+        copyMessage.style.top = `${element.offsetTop - 30}px`;
+        copyMessage.style.left = `${element.offsetLeft}px`;
+
+        setTimeout(() => {
+            copyMessage.style.display = 'none';
+        }, 2000);
+    }
+
     document.getElementById("email").addEventListener("click", function() {
-        copyToClipboard("mobeenk89@gmail.com");
+        copyToClipboard("mobeenk89@gmail.com", this);
     });
 
     document.getElementById("phone").addEventListener("click", function() {
-        copyToClipboard("0412381611");
+        copyToClipboard("0412381611", this);
     });
 
     form.addEventListener('submit', e => {
@@ -258,5 +271,6 @@
         .catch(error => console.error('Looks like something went wrong. Sorry!\n Please try again shortly.', error.message))
     });
 </script>
+
 </body>
 </html>
