@@ -494,3 +494,17 @@ body *:not(#overlay):not(#sideMenu) {
     white-space: nowrap;
 }
 
+/* AWS Badge Styling */
+.aws-badge-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.aws-badge-container div {
+    width: 150px;
+    height: 270px;
+    border: none; /* Ensure no borders are around the iframe */
+}
