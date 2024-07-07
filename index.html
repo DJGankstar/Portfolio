@@ -174,12 +174,13 @@
                 <a href="images/my-cv.pdf" download class="btn btn2">Download Resume</a>
             </div>
             <div class="contact-right">
-                <form>
+                <form name = "submit-to-google-sheet">
                     <input type="text" name="Name" placeholder="Your Name" required>
                     <input type="email" name="Email" placeholder="Your Email" required>
                     <textarea name="Message" rows="6" placeholder="Your Message" required></textarea>
                     <button type="submit" class="btn btn2">Send Message</button>
                 </form>
+                <span id = "message"></span>
             </div>
         </div>        
     </div>
@@ -194,6 +195,10 @@
     var tabContents = document.getElementsByClassName("tab-contents");
     var sideMenu = document.getElementById("sideMenu");
     var overlay = document.getElementById("overlay");
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxEJdBM0NMTNnX5vfvVGRs3-0wjpD8brmLNSBNZviEVTN_S8YURWKp4U7FgvAcOhNXu/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const message = document.getElementById("message");
 
     function opentab(tabName) {
         // Remove active-link class from all links
@@ -222,6 +227,21 @@
         sideMenu.style.right = "-250px";
         overlay.style.display = "none"; // Hide the overlay
     }
+
+    
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            message.innerHTML = "Your message has been sent successfully. I will contact you as soon as possible. Thank you :)"
+            setTimeout(function(){
+               msg.innerHTML = '';
+            }, 5000)
+            
+            form.reset()
+        })
+        .catch(error => console.error('Looks like something went wrong. Sorry!\n Please try again shortly.', error.message))
+    })
 </script>
 </body>
 </html>

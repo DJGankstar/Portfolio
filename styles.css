@@ -458,3 +458,9 @@ body *:not(#overlay):not(#sideMenu) {
         text-align: center;
     }
 }
+
+#message{
+    color: #61b752;
+    margin-top: -40px;
+    display: block;
+}
