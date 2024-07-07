@@ -483,8 +483,8 @@ body *:not(#overlay):not(#sideMenu) {
 
 #copy-message {
     position: absolute;
-    background: #333;
-    color: #fff;
+    background: #262626;
+    color: #ababab;
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 12px;
