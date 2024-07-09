@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="https://kit.fontawesome.com/b115f2222f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Projects Section -->
+    <div id="projects">
+        <div class="container">
+            <nav>
+                <img src="images/logo.png" class="logo">
+                <ul id="sideMenu">
+                    <li><a href="index.html#header">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#portfolio">Portfolio</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <i class="fa-solid fa-xmark" onclick="closeMenu()"></i>
+                </ul>
+                <i class="fa-solid fa-burger" onclick="openMenu()"></i>
+            </nav>
+            <h1 class="sub-title">My Projects</h1>
+            <div class="work-list">
+                <!-- Add your projects here, following the same format as in index.html -->
+                <div class="work">
+                    <img src="images/work-1.png" alt="">
+                    <div class="layer">
+                        <h3>SEO-Optimized Blog Posts Generator</h3>
+                        <p>Generate SEO-Optimized Blog Posts for Your eCommerce Store</p>
+                        <a href="https://calcless.com/generate-seo-optimized-blog-posts-for-your-ecommerce-store/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/work-2.png" alt="">
+                    <div class="layer">
+                        <h3>Image Generator</h3>
+                        <p>Use AI To Bring Your Imagination To Life</p>
+                        <a href="https://calcless.com/image-generator/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/work-4.png" alt="">
+                    <div class="layer">
+                        <h3>Essay Writer</h3>
+                        <p>Save yourself the time and use this tool to create your essays on any topic with the help of AI.</p>
+                        <a href="calcless.com/essay-writer" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/work-5.png" alt="">
+                    <div class="layer">
+                        <h3>Catoon Yourself</h3>
+                        <p>Urtoon’s online tool allows you to easily convert your photo into a cartoon image using artificial intelligence.</p>
+                        <a href="https://urtoon.com/cartoon-yourself/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/work-3.png" alt="">
+                    <div class="layer">
+                        <h3>SCSG Awareness App</h3>
+                        <p>The SCSG Awareness App aspires to be a beacon of support and knowledge for individuals navigating the complexities of cancer.</p>
+                        <a href="https://github.com/TurTleGodss16/321_Project_CancerAwareness" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openMenu(){
+            sideMenu.style.right = "0";
+        }
+
+        function closeMenu(){
+            sideMenu.style.right = "-250px";
+        }
+    </script>
+</body>
+</html>
