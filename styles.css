@@ -314,13 +314,15 @@ ul li {
     border-radius: 6px;
     text-decoration: none;
     color: white;
-    transition: background 0.3s;
+    transition: background 0.3s, color 0.3s;
 }
 
-.btn:hover {
+.btn:hover,
+.btn.btn2:hover,
+form .btn2:hover {
     background: #ff6600;
+    color: #121212; /* Ensure the text color changes to a visible color if needed */
 }
-
 
 /* Contact */
 .contact-left {
@@ -354,7 +356,7 @@ ul li {
     transition: transform 0.3s;
 }
 
-.social-icons a:hover {
+social-icons a:hover {
     color: #ff6600;
     transform: translateY(-5px);
 }
@@ -376,11 +378,6 @@ form .btn2 {
     cursor: pointer;
     transition: transform 0.3s;
     align-self: center; /* Center the button */
-}
-
-.btn.btn2:hover,
-form .btn2:hover {
-    transform: scale(1.1);
 }
 
 form input, form textarea {
@@ -438,7 +435,6 @@ body *:not(#overlay):not(#sideMenu) {
     .header-text h1 {
         font-size: 30px;
         padding-top: 10px;
-        
     }
 
     .header-text {
@@ -539,4 +535,3 @@ body *:not(#overlay):not(#sideMenu) {
     height: 270px;
     border: none; /* Ensure no borders are around the iframe */
 }
-
