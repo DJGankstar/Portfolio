@@ -476,17 +476,21 @@ body *:not(#overlay):not(#sideMenu) {
         flex-basis: 100%;
         margin-bottom: 20px;
     }
-    
+
     .about-col-2{
-        padding-right: 20px;
+        text-align: left;
     }
-    
+        
     .contact-left, .contact-right {
         flex-basis: 100%;
     }
 
     .contact-left {
         text-align: center;
+    }
+
+    .tab-contents{
+        text-align: left;
     }
 }
 
