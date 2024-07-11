@@ -53,7 +53,7 @@
 
                     </ul>
                     <div class="tab-titles">
-                        <p class="links active-link" onclick="opentab('education')">Education</p>
+                        <p class="links active-link">Education</p>
                     </div>
                     <div class="tab-contents active-tab" id="education">
                         <ul>
@@ -169,8 +169,6 @@
     </div>
     
     <script>
-        var links = document.getElementsByClassName("links");
-        var tabContents = document.getElementsByClassName("tab-contents");
         var sideMenu = document.getElementById("sideMenu");
         var overlay = document.getElementById("overlay");
     
@@ -178,22 +176,6 @@
         const form = document.forms['submit-to-google-sheet']
         const message = document.getElementById("message");
     
-        function opentab(tabName) {
-            // Remove active-link class from all links
-            for (let link of links) {
-                link.classList.remove("active-link");
-            }
-    
-            // Add active-link class to the clicked link
-            event.target.classList.add("active-link");
-    
-            // Remove active-tab class from all tab contents
-            for (let tabContent of tabContents) {
-                tabContent.classList.remove("active-tab");
-            }
-                // Add active-tab class to the clicked tab content
-                document.getElementById(tabName).classList.add("active-tab");
-            }
         
             function openMenu(){
                 sideMenu.style.right = "0";
