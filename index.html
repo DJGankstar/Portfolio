@@ -45,48 +45,20 @@
                         I am a software engineer with a strong foundation in web technologies, networking, and object-oriented programming. My education includes:
                     </p>
                     <ul>
-                        <li><strong>Web Technologies</strong>: Designing and implementing web applications, handling form input with scripting.</li>
-                        <li><strong>Networking</strong>: Understanding protocols, designing small business networks, and adhering to professional standards.</li>
-                        <li><strong>Programming</strong>: Creating maintainable object-oriented programs and applying software design principles.</li>
-                        <li><strong>Database Management</strong>: Building relational and NoSQL databases, using SQL for data processing, and ensuring data security.</li>
-                        <li><strong>Cybersecurity</strong>: Analyzing and managing system security, applying AI to cybersecurity problems.</li>
+                        <li>Web Technologies</li>
+                        <li>Networking</li>
+                        <li>Programming</li>
+                        <li>Database Management</li>
+                        <li>Cybersecurity</li>
+
                     </ul>
                     <div class="tab-titles">
-                        <p class="links active-link" onclick="opentab('skills')">Skills</p>
-                        <p class="links" onclick="opentab('experience')">Experience</p>
-                        <p class="links" onclick="opentab('education')">Education</p>
+                        <p class="links active-link" onclick="opentab('education')">Education</p>
                     </div>
-                    <div class="tab-contents active-tab" id="skills">
-                        <ul>
-                            <li><span>Web Technologies</span><br/>Selecting appropriate web technologies, applying web standards, handling form input, configuring web servers, and implementing client-side scripting.</li>
-                            <li><span>Networking</span><br/>Understanding data communications protocols, designing business networks, evaluating networking services, and incorporating professional standards.</li>
-                            <li><span>Programming</span><br/>Designing and implementing object-oriented programs, creating maintainable code, and applying software reuse principles. Skilled in Java, C++, PHP, Python, HTML, CSS, and JavaScript.</li>
-                            <li><span>Database Management</span><br/>Designing relational databases, using SQL for data processing, ensuring data security, and implementing NoSQL databases. Proficient in SQL, PL/SQL, and NoSQL databases.</li>
-                            <li><span>Systems Analysis</span><br/>Identifying system requirements, performing system analysis, using CASE tools, and working in groups for system analysis scenarios.</li>
-                            <li><span>Problem Solving</span><br/>Analyzing problems, formulating problem-solving strategies, evaluating strategies, and documenting analyses.</li>
-                            <li><span>HCI Design</span><br/>Designing user-centered interfaces, implementing HCI principles, and evaluating user experiences.</li>
-                            <li><span>Cybersecurity</span><br/>Analyzing and managing security risks, applying security models, and protecting systems from threats.</li>
-                            <li><span>AI for Cybersecurity</span><br/>Applying AI to cybersecurity problems, using machine learning for threat detection, and implementing AI solutions for cybersecurity.</li>
-                            <li><span>Project Management</span><br/>Applying project management skills, working in teams, and communicating with stakeholders.</li>
-                        </ul>
-                    </div>                    
-                    <div class="tab-contents" id="experience">
-                        <ul>
-                            <li><span>Professional Experience</span><br/>Developed an Android app, created AI-powered tools with OpenAI, and integrated a Voiceflow assistant into a React Native app. Skilled in Java, C++, HTML, CSS, JavaScript, and React Native.</li>
-                            <li><span>AI Web Tools</span><br/>Developed AI web tools at the following sites:
-                                <ul>
-                                    <li><a href="https://calcless.com/generate-seo-optimized-blog-posts-for-your-ecommerce-store/" target="_blank">calcless.com/SEO-Blog-Generator</a></li>
-                                    <li><a href="https://calcless.com/essay-writer/" target="_blank">calcless.com/essay-writer</a></li>
-                                    <li><a href="https://calcless.com/image-generator/" target="_blank">calcless.com/image-generator</a></li>
-                                    <li><a href="https://urtoon.com/cartoon-yourself/" target="_blank">urtoon.com/cartoon-yourself</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="tab-contents" id="education">
+                    <div class="tab-contents active-tab" id="education">
                         <ul>
                             <li><span>2024</span><br/>Completed Bachelors Degree In Computer Science At University of Wollongong, With Majors In Software Engineering & Cybersecurity</li>
-                            <li><span>2018</span><br/>Graduated From Broughton Anglican College in 2018.</li>
+                            <li><span>2018</span><br/>Graduated From Broughton Anglican College in 2017.</li>
                         </ul>
                     </div>
                 </div>
@@ -149,7 +121,7 @@
                     </div>
                 </div>
                 <div class="work">
-                    <img src="images/work-2.png" alt="">
+                    <img src="images/work-1.png" alt="">
                     <div class="layer">
                         <h3>Image Generator</h3>
                         <p>Use AI To Bring Your Imagination To Life</p>
@@ -219,63 +191,66 @@
             for (let tabContent of tabContents) {
                 tabContent.classList.remove("active-tab");
             }
-    
-            // Add active-tab class to the clicked tab content
-            document.getElementById(tabName).classList.add("active-tab");
-        }
-    
-        function openMenu(){
-            sideMenu.style.right = "0";
-            overlay.style.display = "block"; // Show the overlay
-        }
-    
-        function closeMenu(){
-            sideMenu.style.right = "-250px";
-            overlay.style.display = "none"; // Hide the overlay
-        }
-    
-        function copyToClipboard(text, element) {
-            navigator.clipboard.writeText(text).then(() => {
-                showCopyMessage(element);
-            }, err => {
-                console.error('Could not copy text: ', err);
+                // Add active-tab class to the clicked tab content
+                document.getElementById(tabName).classList.add("active-tab");
+            }
+        
+            function openMenu(){
+                sideMenu.style.right = "0";
+                overlay.style.display = "block"; // Show the overlay
+            }
+        
+            function closeMenu(){
+                sideMenu.style.right = "-250px";
+                overlay.style.display = "none"; // Hide the overlay
+            }
+        
+            function copyToClipboard(text, element) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopyMessage(element);
+                }, err => {
+                    console.error('Could not copy text: ', err);
+                });
+            }
+        
+            function showCopyMessage(element) {
+                const copyMessage = document.getElementById('copy-message');
+                copyMessage.innerText = element.id === 'email' ? 'The email has been copied to your clipboard' : 'The phone number has been copied to your clipboard';
+                copyMessage.style.display = 'block';
+                copyMessage.style.top = `${element.offsetTop - 30}px`;
+                copyMessage.style.left = `${element.offsetLeft}px`;
+        
+                setTimeout(() => {
+                    copyMessage.style.display = 'none';
+                }, 1400); // Message display duration set to 1.4 seconds
+            }
+        
+            document.getElementById("email").addEventListener("click", function() {
+                copyToClipboard("mobeenk89@gmail.com", this);
             });
-        }
+        
+            document.getElementById("phone").addEventListener("click", function() {
+                copyToClipboard("0412381611", this);
+            });
+        
+            form.addEventListener('submit', e => {
+                e.preventDefault()
+                fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    message.innerHTML = "Your message has been sent successfully. I will contact you as soon as possible. Thank you :)"
+                    setTimeout(function(){
+                        message.innerHTML = '';
+                    }, 5000)
+                    
+                    form.reset()
+                })
+                .catch(error => {
+                    message.innerHTML = 'Looks like something went wrong. Sorry!\n Please try again shortly.'
+                    console.error('Error:', error.message)
+                })
+            });
+        </script>
+    </body>
+    </html>
     
-        function showCopyMessage(element) {
-            const copyMessage = document.getElementById('copy-message');
-            copyMessage.innerText = element.id === 'email' ? 'The email has been copied to your clipboard' : 'The phone number has been copied to your clipboard';
-            copyMessage.style.display = 'block';
-            copyMessage.style.top = `${element.offsetTop - 30}px`;
-            copyMessage.style.left = `${element.offsetLeft}px`;
-    
-            setTimeout(() => {
-                copyMessage.style.display = 'none';
-            }, 1400); // Message display duration set to 1.4 seconds
-        }
-    
-        document.getElementById("email").addEventListener("click", function() {
-            copyToClipboard("mobeenk89@gmail.com", this);
-        });
-    
-        document.getElementById("phone").addEventListener("click", function() {
-            copyToClipboard("0412381611", this);
-        });
-    
-        form.addEventListener('submit', e => {
-            e.preventDefault()
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-                message.innerHTML = "Your message has been sent successfully. I will contact you as soon as possible. Thank you :)"
-                setTimeout(function(){
-                    message.innerHTML = '';
-                }, 5000)
-                
-                form.reset()
-            })
-            .catch(error => console.error('Looks like something went wrong. Sorry!\n Please try again shortly.', error.message))
-        });
-    </script>
-</body>
-</html>
-
+           
