@@ -477,8 +477,14 @@ body *:not(#overlay):not(#sideMenu) {
         margin-bottom: 20px;
     }
 
+    .tab-contents.active-tab{
+        text-align: left;
+        margin-left: -15px;
+    }
+
     .about-col-2{
         text-align: left;
+        margin-left: -15px;
     }
         
     .contact-left, .contact-right {
