@@ -482,17 +482,17 @@ body *:not(#overlay):not(#sideMenu) {
 
     .tab-contents.active-tab{
         text-align: left;
-        margin-left: -15px;
+        margin-left: -17px;
     }
 
     .tab-contents{
         text-align: left;
-        margin-left: -15px;
+        margin-left: -17px;
     }
 
     .about-col-2{
         text-align: left;
-        margin-left: -15px;
+        margin-left: -17px;
     }
         
     .contact-left, .contact-right {
