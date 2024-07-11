@@ -482,6 +482,11 @@ body *:not(#overlay):not(#sideMenu) {
         margin-left: -15px;
     }
 
+    .tab-contents{
+        text-align: left;
+        margin-left: -15px;
+    }
+
     .about-col-2{
         text-align: left;
         margin-left: -15px;
@@ -493,10 +498,6 @@ body *:not(#overlay):not(#sideMenu) {
 
     .contact-left {
         text-align: center;
-    }
-
-    .tab-contents{
-        text-align: left;
     }
 }
 
