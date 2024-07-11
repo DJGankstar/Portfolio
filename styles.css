@@ -477,6 +477,10 @@ body *:not(#overlay):not(#sideMenu) {
         margin-bottom: 20px;
     }
     
+    .about-col-2{
+        padding-right: 20px;
+    }
+    
     .contact-left, .contact-right {
         flex-basis: 100%;
     }
