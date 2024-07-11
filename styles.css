@@ -432,6 +432,9 @@ body *:not(#overlay):not(#sideMenu) {
         background-image: url(images/phone-background.png);
     }
 
+    .container{
+        flex-basis: 100%;
+    }
     .header-text h1 {
         font-size: 30px;
         padding-top: 10px;
