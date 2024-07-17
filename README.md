@@ -1,1 +1,1 @@
-View my portfolio at [https://djgankstar.github.io/Portfolio/](https://www.mobeenkhan.com/)
+View my portfolio at https://www.mobeenkhan.com/
