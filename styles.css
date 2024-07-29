@@ -70,10 +70,6 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    color: #ff6600; /* Hover color */
-    text-decoration: underline;
-}
 
 .header-text {
     margin-top: 20%;
