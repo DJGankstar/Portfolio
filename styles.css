@@ -54,7 +54,7 @@ nav ul li a::after {
     content: '';
     width: 0;
     height: 3px;
-    background: #ff6600; /* Highlight color */
+    background: #cc5200; /* Highlight color */
     position: absolute;
     left: 0;
     bottom: -6px;
@@ -82,7 +82,7 @@ a {
 }
 
 .header-text h1 span {
-    color: #ff6600;
+    color: #cc5200;
 }
 
 /* About */
@@ -150,7 +150,7 @@ ul li {
     content: '';
     width: 0;
     height: 3px;
-    background-color: #ff6600;
+    background-color: #cc5200;
     position: absolute;
     left: 0;
     bottom: -8px;
@@ -167,7 +167,7 @@ ul li {
 }
 
 .tab-contents ul li span {
-    color: #ff6600;
+    color: #cc5200;
     font-size: 14px;
 }
 
@@ -220,7 +220,7 @@ ul li {
 }
 
 .services-list div:hover {
-    background-color: #ff6600;
+    background-color: #cc5200;
     transform: translateY(-10px);
 }
 
@@ -258,7 +258,7 @@ ul li {
 .layer {
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), #ff6600);
+    background: linear-gradient(rgba(0, 0, 0, 0.6), #cc5200);
     border-radius: 10px;
     position: absolute;
     left: 0;
@@ -282,7 +282,7 @@ ul li {
 
 .layer a {
     margin-top: 20px;
-    color: #ff6600;
+    color: #cc5200;
     text-decoration: none;
     font-size: 18px;
     line-height: 60px;
@@ -304,7 +304,7 @@ ul li {
     display: block;
     margin: 50px auto;
     width: fit-content;
-    border: 1px solid #ff6600;
+    border: 1px solid #cc5200;
     padding: 14px 50px;
     border-radius: 6px;
     text-decoration: none;
@@ -315,7 +315,7 @@ ul li {
 .btn:hover,
 .btn.btn2:hover,
 form .btn2:hover {
-    background: #ff6600;
+    background: #cc5200;
     color: #121212; /* Ensure the text color changes to a visible color if needed */
 }
 
@@ -333,7 +333,7 @@ form .btn2:hover {
 }
 
 .contact-left p i {
-    color: #ff6600;
+    color: #cc5200;
     margin-right: 15px;
     font-size: 25px;
 }
@@ -352,7 +352,7 @@ form .btn2:hover {
 }
 
 social-icons a:hover {
-    color: #ff6600;
+    color: #cc5200;
     transform: translateY(-5px);
 }
 
@@ -366,7 +366,7 @@ form {
 .btn.btn2,
 form .btn2 {
     display: inline-block;
-    background: #ff6600;
+    background: #cc5200;
     padding: 14px 60px;
     font-size: 18px;
     margin-top: 20px;
@@ -447,7 +447,7 @@ body *:not(#overlay):not(#sideMenu) {
     }
 
     nav ul {
-        background: #ff6600;
+        background: #cc5200;
         position: fixed;
         top: 0;
         right: -200px;
@@ -507,7 +507,7 @@ body *:not(#overlay):not(#sideMenu) {
 
 /* Change the highlight color */
 ::selection {
-    background-color: #ff6600; /* Highlight color */
+    background-color: #cc5200; /* Highlight color */
     color: #121212; /* Text color */
 }
 

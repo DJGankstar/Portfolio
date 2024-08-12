@@ -22,13 +22,14 @@
                     <li><a href="#services">Services</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="images/Resume.pdf" download>Download Resume</a></li> <!-- Added resume link -->
                     <i class="fa-solid fa-xmark" onclick="closeMenu()"></i>
                 </ul>
                 <i class="fa-solid fa-burger" onclick="openMenu()"></i>
             </nav>
             <div class="header-text">
                 <p>Software Engineer</p>
-                <h1>Hi, I'm <span>Mobeen-Ur-Rahman</span> Khan</h1>
+                <h1>Hi, I'm <span>Mobeen</span> Khan</h1>
             </div>
         </div>
     </div>
@@ -52,7 +53,6 @@
                         <li>Programming</li>
                         <li>Database Management</li>
                         <li>Cybersecurity</li>
-
                     </ul>
                     <div class="tab-titles">
                         <p class="links active-link">Expertise</p>
@@ -60,14 +60,13 @@
                     <div class="tab-contents active-tab" id="education">
                         <ul>
                             <li><span>2024</span><br/>Completed Bachelors Degree In Computer Science At University of Wollongong, With Majors In Software Engineering & Cybersecurity</li>
-                            <li><span>2018</span><br/>Graduated From Broughton Anglican College in 2017.</li>
+                            <li><span>2017</span><br/>Graduated From Broughton Anglican College in 2017.</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
     
     <!-- Services -->
     <div id="services">
@@ -146,29 +145,21 @@
     <!-- Contact -->
     <div id="contact">
         <div class="container">
-            <div class="row">
-                <div class="contact-left">
-                    <h1>Contact Me</h1>
-                    <p id="email" class="clickable"><i class="fa-solid fa-paper-plane"></i>mobeenk89@gmail.com</p>
-                    <p id="phone" class="clickable"><i class="fa-solid fa-phone"></i>0412381611</p>
-                    <span id="copy-message" style="display: none;"></span>
-                    <a href="images/Mobeen-Ur-Rahman-Khan-Resume.pdf" download class="btn btn2">Download Resume</a>
-                </div>
-                <div class="contact-right">
-                    <form name="submit-to-google-sheet">
-                        <input type="text" name="Name" placeholder="Your Name" required>
-                        <input type="email" name="Email" placeholder="Your Email" required>
-                        <textarea name="Message" rows="6" placeholder="Your Message" required></textarea>
-                        <button type="submit" class="btn btn2">Send Message</button>
-                    </form>
-                    <span id="message"></span>
-                </div>
-            </div>        
+            <div class="contact-right">
+                <h1>Contact Me</h1>
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn btn2">Send Message</button>
+                </form>
+            </div>
         </div>
         <div class="copyright">
-            <p>Copyright © Mobeen-Ur-Rahman</p>
+            <p>Copyright © Mobeen Khan</p>
         </div>
     </div>
+    
     
     <script>
         var sideMenu = document.getElementById("sideMenu");
@@ -208,15 +199,7 @@
                     copyMessage.style.display = 'none';
                 }, 1400); // Message display duration set to 1.4 seconds
             }
-        
-            document.getElementById("email").addEventListener("click", function() {
-                copyToClipboard("mobeenk89@gmail.com", this);
-            });
-        
-            document.getElementById("phone").addEventListener("click", function() {
-                copyToClipboard("0412381611", this);
-            });
-        
+
             form.addEventListener('submit', e => {
                 e.preventDefault()
                 fetch(scriptURL, { method: 'POST', body: new FormData(form)})
@@ -235,6 +218,5 @@
             });
         </script>
     </body>
-    </html>
-    
-           
+</html>
+
