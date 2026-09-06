@@ -524,10 +524,10 @@ function Home() {
       >
         <div className="portrait-frame" data-scroll-motion="portrait">
           <img
-            src="/images/user.png"
-            alt="Mobeen Khan"
-            width="400"
-            height="460"
+            src="/images/mobeen-khan-cartoon.png"
+            alt="Cartoon portrait of Mobeen Khan"
+            width="1254"
+            height="1254"
             loading="lazy"
           />
           <span>Developer. Curious by default.</span>
@@ -690,10 +690,10 @@ function About() {
             that makes it dependable.
           </p>
           <img
-            src="/images/user.png"
-            alt="Mobeen Khan"
-            width="240"
-            height="280"
+            src="/images/mobeen-khan-cartoon.png"
+            alt="Cartoon portrait of Mobeen Khan"
+            width="1254"
+            height="1254"
           />
         </div>
         <div className="bio-grid">
@@ -758,7 +758,12 @@ function About() {
 function Gallery({ item }) {
   const [view, setView] = useState("desktop");
   const comparison = item.slug === "golden-hour-pilates";
-  const responsive = ["jz-tech", "jzsm"].includes(item.slug);
+  const mobileImage = {
+    "jz-tech": "/images/jztech/mobile.png",
+    jzsm: "/images/jzsm/mobile.png",
+    "khan-security-testing": "/images/khan-security-testing-mobile.png",
+  }[item.slug];
+  const responsive = Boolean(mobileImage);
   if (!item.image) return null;
   return (
     <section className="case-gallery" aria-label="Project screenshots">
@@ -806,8 +811,8 @@ function Gallery({ item }) {
         <figure className={`case-image ${responsive ? view : ""}`}>
           <img
             src={
-              responsive
-                ? `/images/${item.slug === "jz-tech" ? "jztech" : "jzsm"}/${view}.png`
+              responsive && view === "mobile"
+                ? mobileImage
                 : item.image
             }
             alt={`${titleFor(item)} interface${responsive ? ` on ${view}` : ""}`}
