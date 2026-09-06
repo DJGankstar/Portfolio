@@ -77,6 +77,27 @@ a:hover {
 button {
   border: 0;
 }
+.scroll-to-top {
+  position: fixed;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgb(255 255 255 / 25%);
+  border-radius: 50%;
+  background: var(--blue);
+  color: white;
+  box-shadow: 0 4px 16px rgb(36 37 31 / 18%);
+}
+.scroll-to-top[hidden] {
+  display: none;
+}
+.scroll-to-top:hover {
+  background: var(--ink);
+}
 .wrap {
   width: min(1280px, calc(100% - 112px));
   margin-inline: auto;
@@ -552,7 +573,9 @@ button {
 }
 .site-footer > div {
   display: flex;
+  flex-wrap: wrap;
   gap: 25px;
+  margin-right: calc(64px + env(safe-area-inset-right));
   font-size: 12px;
 }
 .site-footer > div a {

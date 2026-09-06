@@ -215,6 +215,41 @@ function RouteEffects() {
   }, [location.pathname, location.hash]);
   return null;
 }
+function ScrollToTop() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const update = () => setVisible(window.scrollY > 400);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
+
+  function scrollToTop() {
+    document.getElementById("main")?.focus({ preventScroll: true });
+    window.scrollTo({
+      top: 0,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "instant"
+        : "smooth",
+    });
+  }
+
+  return (
+    <button
+      type="button"
+      className="scroll-to-top"
+      hidden={!visible}
+      onClick={scrollToTop}
+      aria-label="Scroll to top"
+      title="Scroll to top"
+    >
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="m5 12 7-7 7 7M12 5v14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </button>
+  );
+}
 function Header() {
   return (
     <header className="site-header wrap">
@@ -917,6 +952,7 @@ export default function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
+      <ScrollToTop />
     </>
   );
 }
