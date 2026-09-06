@@ -46,7 +46,7 @@ export function useScrollMotion(rootRef) {
           ? { clipPath: "inset(0)", opacity: 1 }
           : { transform: "translate(0)", opacity: 1 };
       const animation = target.animate([from, to], {
-        duration: 1800,
+        duration: 800,
         delay:
           kind === "step" ? Number(target.dataset.motionOrder || 0) * 180 : 0,
         easing: "cubic-bezier(0.4, 0, 0.6, 1)",
