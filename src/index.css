@@ -1758,3 +1758,119 @@ button {
 .project-jzsm .project-visual {
   background: #d7dfd7;
 }
+
+/* Control feedback: preview images and external website links are excluded. */
+:is(.button, .nav-contact, .filters button, .gallery-controls button, .scroll-to-top) {
+  transition: background-color 180ms ease, color 180ms ease,
+    border-color 180ms ease, box-shadow 220ms ease;
+}
+:is(.site-header nav a:not(.nav-contact), .text-link, .more-work a,
+  .site-footer > div a:not([target="_blank"]), .stack-controls button,
+  .project-caption h3 a, .archive-list h2 a, .contact-title) {
+  background-image: linear-gradient(var(--blue), var(--blue));
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0 2px;
+  transition: background-size 220ms ease, color 180ms ease, border-color 180ms ease;
+}
+.stack-controls button[aria-pressed="true"] {
+  background-size: 100% 2px;
+}
+.contact-options > a {
+  transition: border-color 180ms ease, box-shadow 220ms ease;
+}
+.contact-options h3,
+.wordmark {
+  transition: color 180ms ease;
+}
+.contact-title {
+  padding-bottom: 4px;
+}
+:is(.project-caption h3 a, .archive-list h2 a):focus-visible,
+.contact-options a:focus-visible .contact-title {
+  color: var(--blue);
+  background-size: 100% 2px;
+}
+.inline-link {
+  text-underline-offset: 3px;
+  transition: color 180ms ease, text-underline-offset 180ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  :is(.button.primary, .nav-contact):hover {
+    background: #1735c6;
+    color: white;
+    border-color: #1735c6;
+    box-shadow: 0 6px 16px rgb(41 75 242 / 18%);
+  }
+  :is(.filters button, .gallery-controls button):hover {
+    border-color: var(--blue);
+    box-shadow: 0 3px 10px rgb(41 75 242 / 10%);
+  }
+  :is(.filters button, .gallery-controls button):not([aria-pressed="true"]):hover {
+    color: var(--blue);
+    background-color: #e8ecff;
+  }
+  :is(.filters button, .gallery-controls button)[aria-pressed="true"]:hover {
+    background-color: var(--blue);
+  }
+  :is(.site-header nav a:not(.nav-contact), .text-link, .more-work a,
+    .site-footer > div a:not([target="_blank"]), .stack-controls button,
+    .project-caption h3 a, .archive-list h2 a):hover,
+  .contact-options a:hover .contact-title {
+    color: var(--blue);
+    background-size: 100% 2px;
+  }
+  .contact-options > a:hover {
+    border-color: var(--blue);
+    box-shadow: inset 0 2px var(--blue);
+  }
+  .wordmark:hover,
+  .inline-link:hover {
+    color: var(--blue);
+  }
+  .inline-link:hover {
+    text-underline-offset: 6px;
+  }
+  .scroll-to-top:hover {
+    background: #1735c6;
+    box-shadow: 0 6px 18px rgb(41 75 242 / 28%);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  :is(.button, .nav-contact, .filters button, .gallery-controls button, .scroll-to-top) {
+    transition: background-color 180ms ease, color 180ms ease,
+      border-color 180ms ease, box-shadow 220ms ease, translate 220ms ease;
+  }
+  :is(.button, .text-link, .nav-contact, .more-work a, .contact-options h3) > span[aria-hidden="true"],
+  .scroll-to-top svg,
+  .caption-arrow,
+  .archive-list h2 a > span[aria-hidden="true"] {
+    display: inline-block;
+    transition: translate 220ms ease;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    :is(.button.primary, .nav-contact, .filters button, .gallery-controls button, .scroll-to-top):hover {
+      transform: none;
+      translate: 0 -2px;
+    }
+    :is(.button, .text-link, .nav-contact, .more-work a):hover > span[aria-hidden="true"],
+    .contact-options a:hover h3 > span[aria-hidden="true"],
+    .project-caption:has(h3 a:hover) .caption-arrow,
+    .archive-list h2 a:hover > span[aria-hidden="true"] {
+      translate: 3px -3px;
+    }
+    .scroll-to-top:hover svg {
+      translate: 0 -2px;
+    }
+    :is(.button.primary, .nav-contact, .filters button, .gallery-controls button, .scroll-to-top):active {
+      translate: 0 0;
+      box-shadow: none;
+    }
+  }
+}
+/* Cancel the earlier primary-button lift for touch and reduced-motion users. */
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .primary:hover {
+    transform: none;
+  }
+}

@@ -584,7 +584,7 @@ function Contact() {
           >
             <span className="eyebrow">For businesses & collaborators</span>
             <h3>
-              Have a project in mind? <Arrow />
+              <span className="contact-title">Have a project in mind?</span> <Arrow />
             </h3>
             <p>Let’s talk about your website, application or next idea.</p>
           </a>
@@ -593,7 +593,7 @@ function Contact() {
           >
             <span className="eyebrow">For teams & employers</span>
             <h3>
-              Looking for a developer? <Arrow />
+              <span className="contact-title">Looking for a developer?</span> <Arrow />
             </h3>
             <p>I’d love to hear about the role and what you’re building.</p>
           </a>
