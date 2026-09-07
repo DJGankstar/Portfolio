@@ -1786,7 +1786,8 @@ button {
   transition: border-color 180ms ease, box-shadow 220ms ease;
 }
 .contact-options h3,
-.wordmark {
+.wordmark,
+.wordmark span {
   transition: color 180ms ease;
 }
 .contact-title {
@@ -1841,6 +1842,9 @@ button {
   .wordmark:hover,
   .inline-link:hover {
     color: var(--blue);
+  }
+  .wordmark:hover span {
+    color: var(--ink);
   }
   .inline-link:hover {
     text-underline-offset: 6px;
