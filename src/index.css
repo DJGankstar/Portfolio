@@ -59,6 +59,34 @@
 * {
   box-sizing: border-box;
 }
+/* Native scrolling, themed for the page and nested overflow areas. */
+@media (forced-colors: none) {
+  :root {
+    scrollbar-color: var(--accent-fill) var(--paper);
+  }
+  @supports selector(::-webkit-scrollbar) {
+    :root {
+      /* Let the pseudo-elements supply the thumb shape and hover state. */
+      scrollbar-color: auto;
+    }
+    ::-webkit-scrollbar {
+      width: 14px;
+      height: 14px;
+    }
+    ::-webkit-scrollbar-track,
+    ::-webkit-scrollbar-corner {
+      background: var(--paper);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-fill);
+      border: 3px solid var(--paper);
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-hover);
+    }
+  }
+}
 body {
   margin: 0;
   min-width: 320px;
