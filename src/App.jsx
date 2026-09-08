@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useScrollMotion } from "./useScrollMotion";
+import ThemeToggle from "./ThemeToggle";
 import {
   Link,
   NavLink,
@@ -262,6 +263,7 @@ function Header() {
         <Link className="nav-contact" to="/#contact">
           Let’s talk <Arrow />
         </Link>
+        <ThemeToggle />
       </nav>
     </header>
   );

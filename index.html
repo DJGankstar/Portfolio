@@ -10,6 +10,19 @@
     />
     <link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-mk-transparent.png" />
     <meta name="theme-color" content="#f6f5ef" />
+    <script>
+      // Resolve before first paint so a saved dark theme never flashes ivory.
+      (() => {
+        let saved;
+        try { saved = localStorage.getItem('portfolio-theme'); } catch {}
+        const theme = saved === 'light' || saved === 'dark'
+          ? saved
+          : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = theme;
+        document.querySelector('meta[name="theme-color"]').content =
+          theme === 'dark' ? '#181a19' : '#f6f5ef';
+      })();
+    </script>
     <meta
       property="og:title"
       content="Mobeen Khan — Thoughtful interfaces. Solid engineering."

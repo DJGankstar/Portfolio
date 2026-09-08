@@ -4,8 +4,8 @@
 @tailwind utilities;
 :root {
   font-family: "DM Sans", sans-serif;
-  color: #24251f;
-  background: #f6f5ef;
+  color: var(--ink);
+  background: var(--paper);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -14,6 +14,47 @@
   --muted: #64655c;
   --blue: #294bf2;
   --line: #d9dad0;
+  color-scheme: light;
+  --accent-fill: #294bf2;
+  --accent-hover: #1735c6;
+  --surface: #e8e9e2;
+  --portrait: #e6e7df;
+  --contact: #e8ecff;
+  --contact-line: #b9c2ed;
+  --contact-text: #545b75;
+  --prose: #52564b;
+  --prose-link: #2443ce;
+  --approach: #22241f;
+  --on-approach: #f6f5ef;
+  --project-neutral: #e8e6de;
+  --project-peach: #e9b493;
+  --project-sage: #d7dfd7;
+  --project-blue: #cdd9e1;
+  --project-lilac: #d8d9ee;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #181a19;
+  --ink: #f1f0e9;
+  --muted: #b1b5ad;
+  --blue: #9fabff;
+  --line: #41463f;
+  --accent-fill: #3857e8;
+  --accent-hover: #2946c8;
+  --surface: #242925;
+  --portrait: #282d28;
+  --contact: #222942;
+  --contact-line: #4b5678;
+  --contact-text: #bdc5de;
+  --prose: #c5c9bf;
+  --prose-link: #acb7ff;
+  --approach: #111412;
+  --on-approach: #f1f0e9;
+  --project-neutral: #30332c;
+  --project-peach: #49372d;
+  --project-sage: #2c3932;
+  --project-blue: #293944;
+  --project-lilac: #33354b;
 }
 * {
   box-sizing: border-box;
@@ -60,7 +101,7 @@ p {
   line-height: 1.65;
 }
 ::selection {
-  background: var(--blue);
+  background: var(--accent-fill);
   color: white;
 }
 :focus-visible {
@@ -88,7 +129,7 @@ button {
   height: 48px;
   border: 1px solid rgb(255 255 255 / 25%);
   border-radius: 50%;
-  background: var(--blue);
+  background: var(--accent-fill);
   color: white;
   box-shadow: 0 4px 16px rgb(36 37 31 / 18%);
 }
@@ -97,6 +138,7 @@ button {
 }
 .scroll-to-top:hover {
   background: var(--ink);
+  color: var(--paper);
 }
 .wrap {
   width: min(1280px, calc(100% - 112px));
@@ -145,11 +187,11 @@ button {
     transform 0.2s;
 }
 .primary {
-  background: var(--blue);
+  background: var(--accent-fill);
   color: white;
 }
 .primary:hover {
-  background: #1735c6;
+  background: var(--accent-hover);
   transform: translateY(-2px);
 }
 .button span {
@@ -161,7 +203,7 @@ button {
   left: 20px;
   top: -100px;
   background: var(--ink);
-  color: white;
+  color: var(--paper);
   padding: 16px;
   z-index: 100;
 }
@@ -291,21 +333,21 @@ button {
   justify-content: center;
   position: relative;
   overflow: hidden;
-  background: #e8e6de;
+  background: var(--project-neutral);
   padding: 55px 35px 30px;
   border-radius: 3px;
 }
 .project-golden-hour-pilates .project-visual {
-  background: #e9b493;
+  background: var(--project-peach);
 }
 .project-khan-security-testing .project-visual {
-  background: #d7dfd7;
+  background: var(--project-sage);
 }
 .project-bunkerify .project-visual {
-  background: #cdd9e1;
+  background: var(--project-blue);
 }
 .project-incident-console .project-visual {
-  background: #d8d9ee;
+  background: var(--project-lilac);
 }
 .visual-index {
   position: absolute;
@@ -418,8 +460,8 @@ button {
   margin-left: 10px;
 }
 .approach {
-  background: #22241f;
-  color: var(--paper);
+  background: var(--approach);
+  color: var(--on-approach);
 }
 .approach-layout {
   display: grid;
@@ -478,7 +520,7 @@ button {
   gap: 110px;
 }
 .portrait-frame {
-  background: #e6e7df;
+  background: var(--portrait);
   padding: 40px 40px 0;
   position: relative;
 }
@@ -509,7 +551,7 @@ button {
   margin-top: 24px;
 }
 .contact-section {
-  background: #e8ecff;
+  background: var(--contact);
   padding-block: 82px;
   scroll-margin-top: 20px;
 }
@@ -541,7 +583,7 @@ button {
 }
 .contact-options > a {
   padding-top: 25px;
-  border-top: 1px solid #b9c2ed;
+  border-top: 1px solid var(--contact-line);
   display: block;
 }
 .contact-options h3 {
@@ -554,7 +596,7 @@ button {
 }
 .contact-options p {
   font-size: 14px;
-  color: #545b75;
+  color: var(--contact-text);
   margin-top: 8px;
 }
 .contact-options a:hover h3 {
@@ -611,6 +653,7 @@ button {
 }
 .filters button,
 .gallery-controls button {
+  color: var(--ink);
   background: transparent;
   padding: 12px 20px;
   border: 1px solid var(--line);
@@ -620,7 +663,7 @@ button {
 .filters button[aria-pressed="true"],
 .gallery-controls button[aria-pressed="true"] {
   background: var(--ink);
-  color: white;
+  color: var(--paper);
   border-color: var(--ink);
 }
 .filters button:hover,
@@ -667,7 +710,7 @@ button {
 }
 .archive-image {
   overflow: hidden;
-  background: #e4e5dd;
+  background: var(--surface);
   height: 150px;
 }
 .archive-image img {
@@ -820,7 +863,7 @@ button {
   gap: 25px;
 }
 .comparison figure {
-  background: #e8e9e2;
+  background: var(--surface);
 }
 .comparison figcaption {
   padding: 15px;
@@ -840,7 +883,7 @@ button {
   aspect-ratio: 390/844;
 }
 .case-image {
-  background: #e8e9e2;
+  background: var(--surface);
   padding: 30px;
 }
 .case-image img {
@@ -878,7 +921,7 @@ button {
 .prose {
   max-width: 760px;
   font-size: 16px;
-  color: #52564b;
+  color: var(--prose);
   line-height: 1.8;
 }
 .prose h2 {
@@ -909,13 +952,13 @@ button {
   margin-block: 10px;
 }
 .prose a {
-  color: #2443ce;
+  color: var(--prose-link);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 .prose pre {
   overflow: auto;
-  background: #e8e9e2;
+  background: var(--surface);
   padding: 20px;
 }
 .prose strong {
@@ -1752,10 +1795,10 @@ button {
 }
 
 .project-jz-tech .project-visual {
-  background: #d8d9ee;
+  background: var(--project-lilac);
 }
 .project-jzsm .project-visual {
-  background: #d7dfd7;
+  background: var(--project-sage);
 }
 
 /* Shared text/control feedback; preview images keep their existing treatment. */
@@ -1805,9 +1848,9 @@ button {
 }
 @media (hover: hover) and (pointer: fine) {
   :is(.button.primary, .nav-contact):hover {
-    background: #1735c6;
+    background: var(--accent-hover);
     color: white;
-    border-color: #1735c6;
+    border-color: var(--accent-hover);
     box-shadow: 0 6px 16px rgb(41 75 242 / 18%);
   }
   :is(.filters button, .gallery-controls button):hover {
@@ -1816,10 +1859,11 @@ button {
   }
   :is(.filters button, .gallery-controls button):not([aria-pressed="true"]):hover {
     color: var(--blue);
-    background-color: #e8ecff;
+    background-color: var(--contact);
   }
   :is(.filters button, .gallery-controls button)[aria-pressed="true"]:hover {
-    background-color: var(--blue);
+    background-color: var(--accent-fill);
+    color: white;
   }
   :is(.site-header nav a:not(.nav-contact), .text-link, .more-work a,
     .site-footer > div a, .case-links a, .prose a, .stack-controls button,
@@ -1850,7 +1894,8 @@ button {
     text-underline-offset: 6px;
   }
   .scroll-to-top:hover {
-    background: #1735c6;
+    color: white;
+    background: var(--accent-hover);
     box-shadow: 0 6px 18px rgb(41 75 242 / 28%);
   }
 }
@@ -1893,4 +1938,34 @@ button {
   .primary:hover {
     transform: none;
   }
+}
+
+/* Theme switch: stays in the header on every route, including small screens. */
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--ink);
+  background: transparent;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+.theme-toggle:hover {
+  color: var(--blue);
+  background: var(--contact);
+  border-color: var(--blue);
+}
+.theme-toggle:active { background: var(--surface); }
+@media (max-width: 520px) {
+  .site-header nav { gap: 12px; }
+  .site-header .nav-contact { gap: 8px; padding-inline: 10px; }
+}
+@media (max-width: 380px) {
+  .site-header nav { gap: 8px; }
+  .site-header .nav-contact { padding-inline: 8px; }
+  .site-header .nav-contact > span { display: none; }
 }
