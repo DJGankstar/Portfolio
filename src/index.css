@@ -37,17 +37,17 @@
   --paper: #181a19;
   --ink: #f1f0e9;
   --muted: #b1b5ad;
-  --blue: #9fabff;
+  --blue: #294bf2;
   --line: #41463f;
-  --accent-fill: #3857e8;
-  --accent-hover: #2946c8;
+  --accent-fill: #294bf2;
+  --accent-hover: #1735c6;
   --surface: #242925;
   --portrait: #282d28;
   --contact: #222942;
   --contact-line: #4b5678;
   --contact-text: #bdc5de;
   --prose: #c5c9bf;
-  --prose-link: #acb7ff;
+  --prose-link: #294bf2;
   --approach: #111412;
   --on-approach: #f1f0e9;
   --project-neutral: #30332c;
@@ -481,6 +481,9 @@ button {
 }
 .approach h2 > span {
   color: #9fabff;
+}
+:root[data-theme="dark"] .approach h2 > span {
+  color: var(--blue);
 }
 .approach-layout > div > p:last-child {
   max-width: 350px;
