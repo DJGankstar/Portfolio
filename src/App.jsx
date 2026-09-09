@@ -33,7 +33,7 @@ const descriptions = [
     "bunkerify",
     "Security, with a starting point.",
     "A self-assessment platform that turns complex security questions into a clearer next step.",
-    "/images/bunkerify.png",
+    "/images/bunkerify/after-desktop.png",
     "Security & AI",
     "Product design · Full-stack development",
     bunkerify,
@@ -759,7 +759,18 @@ function About() {
 }
 function Gallery({ item }) {
   const [view, setView] = useState("desktop");
-  const comparison = item.slug === "golden-hour-pilates";
+  const comparison = {
+    "golden-hour-pilates": {
+      directory: "golden-hour",
+      before: "Before · original website",
+      after: "After · redesign capture",
+    },
+    bunkerify: {
+      directory: "bunkerify",
+      before: "Before · 8 Sep 2026",
+      after: "After · 9 Sep 2026",
+    },
+  }[item.slug];
   const mobileImage = {
     "jz-tech": "/images/jztech/mobile.png",
     jzsm: "/images/jzsm/mobile.png",
@@ -790,19 +801,17 @@ function Gallery({ item }) {
           {["before", "after"].map((stage) => (
             <figure key={stage}>
               <figcaption>
-                {stage === "before"
-                  ? "Before · original website"
-                  : "After · redesign capture"}
+                {comparison[stage]}
               </figcaption>
               <a
-                href={`/images/golden-hour/${stage}-${view}-full.png`}
+                href={`/images/${comparison.directory}/${stage}-${view}-full.png`}
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`Open full ${stage} ${view} screenshot`}
               >
                 <img
-                  src={`/images/golden-hour/${stage}-${view}.png`}
-                  alt={`Golden Hour Pilates ${stage} redesign, ${view}`}
+                  src={`/images/${comparison.directory}/${stage}-${view}.png`}
+                  alt={`${titleFor(item)} ${stage} redesign, ${view}`}
                   loading="lazy"
                 />
               </a>

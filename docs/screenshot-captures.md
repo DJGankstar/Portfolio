@@ -1,5 +1,13 @@
 # Portfolio screenshot captures
 
+## Bunkerify before & after — 9 September 2026
+
+- Before: original blue/cyan public site captured on 8 September 2026. Copied without modification from the dated archive at `/home/mobeen/openclaw-workspace/artifacts/bunkerify/before-2026-09-08/`; that archive and its manifest remain untouched.
+- After: live graphite/lime redesign at https://www.bunkerify.com/ captured on 9 September 2026, approximately 12:17 AEST. Both desktop and mobile returned HTTP 200 with the heading “Your business. Better defended.” and no broken images.
+- Matching capture settings: Chromium 151, desktop viewport 1440 × 1000, mobile viewport 390 × 844, 2× device scale, light system colour preference, Australia/Sydney timezone and en-AU locale. Mobile uses touch/mobile emulation. Fonts/images were awaited; the full page was scrolled to reveal content; screenshot animation freezing was enabled. No forms were submitted or assessments started.
+- Files: `public/images/bunkerify/{before,after}-{desktop,mobile}.png` for viewport shots and corresponding `-full.png` files for the original full-page captures. These are real browser screenshots, not generated images.
+- Homepage hero, selected-work card and archive now use `after-desktop.png`. The case study offers dated before/after pairs with desktop/mobile switching and links to full-page captures. The older `public/images/bunkerify.png` is retained but no longer used by these previews.
+
 ## 6 September 2026
 
 Captured from the public live websites in fresh Chromium sessions. Reduced motion was enabled except for the corrected JZ Tech desktop capture described below. Desktop viewport: 1440 × 1000; mobile: 390 × 844. These are browser screenshots, not mockups.
