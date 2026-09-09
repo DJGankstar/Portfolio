@@ -318,6 +318,38 @@ function ProjectCard({ item }) {
     </article>
   );
 }
+function StackCardContents({ item }) {
+  return (
+    <>
+      <div className="stack-browser" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+        <p>{new URL(item.website).hostname.replace("www.", "")}</p>
+      </div>
+      <img
+        className="stack-preview"
+        src={item.image}
+        alt={`${titleFor(item)} interface`}
+        width="1440"
+        height="1000"
+        fetchPriority="high"
+      />
+      <div className="stack-caption">
+        <span>{titleFor(item)}</span>
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          aria-hidden="true"
+        >
+          <path d="M5 19 19 5M5 5h14v14" />
+        </svg>
+      </div>
+    </>
+  );
+}
 function ProjectStack() {
   const options = featured.map((item) => ({
     label:
@@ -330,15 +362,42 @@ function ProjectStack() {
             : titleFor(item),
     item,
   }));
-  const [active, setActive] = useState(0);
+  const [{ active, previous, revision }, setDeck] = useState({
+    active: 0, previous: null, revision: 0,
+  });
   const { item } = options[active];
+
+  function selectProject(index) {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setDeck((deck) => deck.active === index ? deck : {
+      active: index,
+      previous: reduced ? null : deck.active,
+      revision: deck.revision + 1,
+    });
+  }
+
+  useEffect(() => {
+    if (previous === null) return;
+    const settle = () => setDeck((deck) => deck.revision === revision
+      ? { ...deck, previous: null } : deck);
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const preferenceChanged = () => { if (media.matches) settle(); };
+    const timeout = window.setTimeout(settle, 900);
+    media.addEventListener("change", preferenceChanged);
+    preferenceChanged();
+    return () => {
+      window.clearTimeout(timeout);
+      media.removeEventListener("change", preferenceChanged);
+    };
+  }, [previous, revision]);
+  const nextItem = options[(active + 1) % options.length].item;
   return (
     <div className="project-stack">
-      <div className="stack-stage">
+      <div className={`stack-stage${previous !== null ? " is-swapping" : ""}`}>
         <div className="stack-backdrop" aria-hidden="true" />
-        <div className="stack-back-sheet" aria-hidden="true">
+        <div key={nextItem.slug} className="stack-back-sheet" aria-hidden="true">
           <img
-            src="/images/khan-security-testing.png"
+            src={nextItem.image}
             alt=""
             width="1440"
             height="1000"
@@ -346,38 +405,18 @@ function ProjectStack() {
           />
         </div>
         <Link
-          className="stack-front"
+          key={`${item.slug}-${revision}`}
+          className={`stack-front${revision > 0 ? " stack-entering" : ""}`}
           to={pathFor(item)}
           aria-label={`Explore ${titleFor(item)} case study`}
         >
-          <div className="stack-browser" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-            <p>{new URL(item.website).hostname.replace("www.", "")}</p>
-          </div>
-          <img
-            key={item.slug}
-            className="stack-preview"
-            src={item.image}
-            alt={`${titleFor(item)} interface`}
-            width="1440"
-            height="1000"
-            fetchPriority="high"
-          />
-          <div className="stack-caption">
-            <span>{titleFor(item)}</span>
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              aria-hidden="true"
-            >
-              <path d="M5 19 19 5M5 5h14v14" />
-            </svg>
-          </div>
+          <StackCardContents item={item} />
         </Link>
+        {previous !== null && (
+          <div key={`leaving-${revision}`} className="stack-front stack-leaving" aria-hidden="true">
+            <StackCardContents item={options[previous].item} />
+          </div>
+        )}
         <span className="stack-mark" aria-hidden="true">
           mk.
         </span>
@@ -390,7 +429,7 @@ function ProjectStack() {
         {options.map(({ label }, index) => (
           <button
             key={label}
-            onClick={() => setActive(index)}
+            onClick={() => selectProject(index)}
             aria-pressed={active === index}
           >
             {label}

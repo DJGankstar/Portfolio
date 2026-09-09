@@ -1,5 +1,12 @@
 # Portfolio screenshot captures
 
+## Khan Security Testing refresh — 9 September 2026
+
+- Fresh live captures from https://khansecuritytesting.com/ (redirected from www), approximately 19:39 AEST. Desktop/mobile both returned HTTP 200 and the current “Understand the risks. Know what to fix.” heading, with no broken images detected.
+- Desktop viewport 1440 × 1000; mobile 390 × 844; both at 2× device scale, fresh Chromium 151 contexts, light system colour preference. Mobile uses touch emulation. Fonts/images were awaited and the page returned to the top after scroll reveals settled. Motion was enabled while loading; screenshots froze CSS animations. No forms or account actions were submitted.
+- Replaced `public/images/khan-security-testing.png` and `public/images/khan-security-testing-mobile.png`. Existing references update the homepage hero/backdrop, selected-work card, archive and responsive case-study gallery together.
+- Previous images and new full-page reference captures are preserved in the local ignored `artifacts/portfolio-redesign/kst-refresh-2026-09-09/` folder. No other projects’ images changed.
+
 ## Bunkerify before & after — 9 September 2026
 
 - Before: original blue/cyan public site captured on 8 September 2026. Copied without modification from the dated archive at `/home/mobeen/openclaw-workspace/artifacts/bunkerify/before-2026-09-08/`; that archive and its manifest remain untouched.
