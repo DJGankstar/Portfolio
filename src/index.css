@@ -950,6 +950,16 @@ button {
   position: sticky;
   top: 30px;
 }
+.privacy-page {
+  max-width: 820px;
+}
+.privacy-page h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: -0.055em;
+}
+.privacy-page .prose {
+  margin-top: 3rem;
+}
 .prose {
   max-width: 760px;
   font-size: 16px;

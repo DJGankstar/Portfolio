@@ -1,3 +1,4 @@
+import { trackPageview } from "./analytics";
 import { useEffect, useRef, useState } from "react";
 import { useScrollMotion } from "./useScrollMotion";
 import ThemeToggle from "./ThemeToggle";
@@ -181,6 +182,7 @@ function RouteEffects() {
   const location = useLocation();
   const previousRoute = useRef(`${location.pathname}${location.hash}`);
   useEffect(() => {
+    trackPageview();
     const project = work.find(
       (item) =>
         location.pathname === `/projects/${item.slug}` ||
@@ -192,6 +194,8 @@ function RouteEffects() {
         ? "Selected work"
         : location.pathname === "/about"
           ? "About"
+          : location.pathname === "/privacy"
+            ? "Privacy"
           : location.pathname === "/"
             ? "Developer & creative problem solver"
             : "Page not found";
@@ -950,6 +954,31 @@ function ProjectDetail() {
     </main>
   );
 }
+function Privacy() {
+  return (
+    <main id="main" tabIndex="-1" className="wrap section privacy-page">
+      <p className="eyebrow">Last updated · 12 September 2026</p>
+      <h1>Privacy</h1>
+      <p className="page-intro">A short guide to the information used by this portfolio.</p>
+      <div className="prose">
+        <h2>Website analytics</h2>
+        <p>I use Plausible Analytics to understand which pages people visit, where visits come from, and which links they use. This includes referral sites, campaign tags, browser and device type, approximate location, and clicks on contact and external links. A contact click does not tell me whether you sent an email.</p>
+        <p>Plausible does not use analytics cookies or persistent cross-site identifiers. It processes IP addresses to estimate location and count daily visitors, but says it does not store raw IP addresses. Analytics is processed and stored in the EU. I view aggregate statistics, not a list of named visitors.</p>
+        <p>The contact-click event does not include the email address, subject or message. Please do not put personal information in campaign tags or URLs you share.</p>
+        <p>Read <a href="https://plausible.io/data-policy" target="_blank" rel="noreferrer">Plausible’s data policy</a> for details about its processing.</p>
+        <h2>Your theme preference</h2>
+        <p>If you choose light or dark mode, this site saves that choice in your browser’s local storage under <code>portfolio-theme</code>. It is used to remember the appearance you selected, not to identify you. You can remove it by clearing this site’s browser data.</p>
+        <h2>Contacting me</h2>
+        <p>Email links open your email application. If you send a message, I receive the information you include, such as your email address, name and enquiry, and use it to respond. Your email provider and mine process the message as part of delivering and storing email. Please avoid sending sensitive information unless it is needed for our conversation.</p>
+        <h2>Hosting and external websites</h2>
+        <p>This portfolio is hosted on GitHub Pages. GitHub may process technical request information, including IP addresses, to serve and secure the site. See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noreferrer">GitHub Privacy Statement</a>.</p>
+        <p>Project previews are images hosted with this portfolio. Following an external project or social link takes you to another website with its own privacy practices.</p>
+        <h2>Questions</h2>
+        <p>For questions about this notice or information you have emailed me, <a href={mail}>contact Mobeen Khan</a>.</p>
+      </div>
+    </main>
+  );
+}
 function NotFound() {
   return (
     <main id="main" tabIndex="-1" className="wrap section not-found">
@@ -972,6 +1001,7 @@ function Footer() {
       </Link>
       <p>© {new Date().getFullYear()} Mobeen Khan</p>
       <div>
+        <Link to="/privacy">Privacy</Link>
         <External href="https://github.com/mobeen786822">GitHub</External>
         <External href="https://www.linkedin.com/in/mobeen-khan-6b3340197">
           LinkedIn
@@ -1002,6 +1032,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/about" element={<About />} />
+        <Route path="/privacy" element={<Privacy />} />
         <Route path="/projects/:slug" element={<ProjectDetail />} />
         <Route path="/experience/:slug" element={<ProjectDetail />} />
         <Route path="*" element={<NotFound />} />
