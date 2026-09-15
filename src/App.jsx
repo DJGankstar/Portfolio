@@ -1,5 +1,5 @@
 import { trackPageview } from "./analytics";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useScrollMotion } from "./useScrollMotion";
 import ThemeToggle from "./ThemeToggle";
 import {
@@ -178,9 +178,52 @@ function SectionLabel({ number, children }) {
     </p>
   );
 }
+function scrollToSection(target, smooth) {
+  target.focus({ preventScroll: true });
+  target.scrollIntoView({
+    behavior: smooth && !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? "smooth" : "instant",
+  });
+}
+function SectionLink({ to, children, ...props }) {
+  const location = useLocation();
+  return <Link {...props} to={to} onClick={(event) => {
+    // React Router does not rerun route effects for an already-active anchor.
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (`${location.pathname}${location.hash}` !== to) return;
+    const target = document.getElementById(location.hash.slice(1));
+    if (target) {
+      event.preventDefault();
+      scrollToSection(target, true);
+    }
+  }}>{children}</Link>;
+}
 function RouteEffects() {
   const location = useLocation();
   const previousRoute = useRef(`${location.pathname}${location.hash}`);
+  const previousPath = useRef(location.pathname);
+  useLayoutEffect(() => {
+    const main = document.querySelector("main");
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    // Animate only page changes, not filters, theme switches or section anchors.
+    // Deep links land directly at their target without moving it afterwards.
+    if (!main?.animate || preference.matches || location.hash) return;
+    const animation = main.animate(
+      [{ opacity: 0.35, transform: "translateY(18px)" }, { opacity: 1, transform: "none" }],
+      { duration: 800, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "none" },
+    );
+    animation.id = "page-entry";
+    const settle = () => animation.cancel();
+    const focus = (event) => { if (event.target !== main) settle(); };
+    const changed = () => { if (preference.matches) settle(); };
+    preference.addEventListener("change", changed);
+    main.addEventListener("focusin", focus);
+    return () => {
+      settle();
+      preference.removeEventListener("change", changed);
+      main.removeEventListener("focusin", focus);
+    };
+  }, [location.pathname]);
   useEffect(() => {
     trackPageview();
     const project = work.find(
@@ -210,13 +253,15 @@ function RouteEffects() {
     const target = location.hash
       ? document.getElementById(location.hash.slice(1))
       : document.querySelector("main");
-    if (location.hash && target) target.scrollIntoView({ behavior: "instant" });
-    else window.scrollTo({ top: 0, behavior: "instant" });
     const currentRoute = `${location.pathname}${location.hash}`;
+    if (location.hash && target) scrollToSection(target,
+      previousPath.current === location.pathname && previousRoute.current !== currentRoute);
+    else window.scrollTo({ top: 0, behavior: "instant" });
     if (previousRoute.current !== currentRoute) {
       target?.focus({ preventScroll: true });
     }
     previousRoute.current = currentRoute;
+    previousPath.current = location.pathname;
   }, [location.pathname, location.hash]);
   return null;
 }
@@ -264,9 +309,9 @@ function Header() {
       <nav aria-label="Main navigation">
         <NavLink to="/projects">Work</NavLink>
         <NavLink to="/about">About</NavLink>
-        <Link className="nav-contact" to="/#contact">
+        <SectionLink className="nav-contact" to="/#contact">
           Let’s talk <Arrow />
-        </Link>
+        </SectionLink>
         <ThemeToggle />
       </nav>
     </header>
@@ -469,9 +514,9 @@ function Home() {
                 underneath.
               </p>
               <div className="hero-actions">
-                <Link className="button primary" to="/#selected-work">
+                <SectionLink className="button primary" to="/#selected-work">
                   Explore my work <span aria-hidden="true">↓</span>
-                </Link>
+                </SectionLink>
                 <Link className="text-link" to="/about">
                   A little about me <Arrow />
                 </Link>
@@ -647,8 +692,37 @@ function Contact() {
     </section>
   );
 }
+// Button-driven replacements animate only after a selection changes, so they
+// don't double up with the page entrance on the initial render.
+function useContentEntrance(selection) {
+  const ref = useRef(null);
+  const previous = useRef(selection);
+  useLayoutEffect(() => {
+    if (previous.current === selection) return;
+    previous.current = selection;
+    const node = ref.current;
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!node?.animate || preference.matches) return;
+    const animation = node.animate(
+      [{ opacity: 0.35, transform: "translateY(18px)" }, { opacity: 1, transform: "none" }],
+      { duration: 800, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "none" },
+    );
+    animation.id = "content-entry";
+    const settle = () => animation.cancel();
+    const changed = () => { if (preference.matches) settle(); };
+    node.addEventListener("focusin", settle);
+    preference.addEventListener("change", changed);
+    return () => {
+      settle();
+      node.removeEventListener("focusin", settle);
+      preference.removeEventListener("change", changed);
+    };
+  }, [selection]);
+  return ref;
+}
 function Projects() {
   const [filter, setFilter] = useState("All work");
+  const contentRef = useContentEntrance(filter);
   const visible =
     filter === "All work" ? work : work.filter((item) => item.type === filter);
   return (
@@ -677,7 +751,7 @@ function Projects() {
       <p className="result-count" role="status">
         {visible.length} projects
       </p>
-      <div className="archive-list">
+      <div className="archive-list" ref={contentRef}>
         {visible.map((item, i) => (
           <article key={item.slug}>
             <span className="archive-number">
@@ -802,6 +876,7 @@ function About() {
 }
 function Gallery({ item }) {
   const [view, setView] = useState("desktop");
+  const contentRef = useContentEntrance(view);
   const comparison = {
     "golden-hour-pilates": {
       directory: "golden-hour",
@@ -811,7 +886,7 @@ function Gallery({ item }) {
     bunkerify: {
       directory: "bunkerify",
       before: "Before · 8 Sep 2026",
-      after: "After · 9 Sep 2026",
+      after: "After · 15 Sep 2026",
     },
   }[item.slug];
   const mobileImage = {
@@ -840,7 +915,7 @@ function Gallery({ item }) {
         </div>
       )}
       {comparison ? (
-        <div className={`comparison ${view}`}>
+        <div className={`comparison ${view}`} ref={contentRef}>
           {["before", "after"].map((stage) => (
             <figure key={stage}>
               <figcaption>
@@ -862,7 +937,7 @@ function Gallery({ item }) {
           ))}
         </div>
       ) : (
-        <figure className={`case-image ${responsive ? view : ""}`}>
+        <figure className={`case-image ${responsive ? view : ""}`} ref={contentRef}>
           <img
             src={
               responsive && view === "mobile"
