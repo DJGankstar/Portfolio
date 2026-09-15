@@ -11,6 +11,21 @@ export default function ThemeToggle() {
     document.documentElement.dataset.theme || "light",
   );
   const preference = useRef(savedTheme());
+  const transitionTimer = useRef(null);
+  const icon = useRef(null);
+  const iconAnimation = useRef(null);
+
+  useEffect(() => {
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const settle = () => {
+      clearTimeout(transitionTimer.current);
+      document.documentElement.classList.remove("theme-changing");
+      iconAnimation.current?.cancel();
+    };
+    const changed = () => { if (motion.matches) settle(); };
+    motion.addEventListener("change", changed);
+    return () => { settle(); motion.removeEventListener("change", changed); };
+  }, []);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -41,6 +56,24 @@ export default function ThemeToggle() {
 
   function toggle() {
     const next = theme === "dark" ? "light" : "dark";
+    const root = document.documentElement;
+    clearTimeout(transitionTimer.current);
+    iconAnimation.current?.cancel();
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      root.classList.add("theme-changing");
+      // Establish transition rules before changing the palette, including on
+      // the first click. The temporary rules never animate initial page load.
+      void getComputedStyle(root).backgroundColor;
+      transitionTimer.current = setTimeout(() => root.classList.remove("theme-changing"), 350);
+      if (icon.current?.animate) {
+        iconAnimation.current = icon.current.animate(
+          [{ transform: `rotate(${next === "dark" ? -35 : 35}deg)`, opacity: 0.5 },
+            { transform: "rotate(0deg)", opacity: 1 }],
+          { duration: 300, easing: "ease-out" },
+        );
+        iconAnimation.current.id = "theme-icon";
+      }
+    } else root.classList.remove("theme-changing");
     preference.current = next;
     try { localStorage.setItem(storageKey, next); } catch { /* Session still works. */ }
     setTheme(next);
@@ -50,7 +83,7 @@ export default function ThemeToggle() {
     <button className="theme-toggle" type="button" onClick={toggle}
       aria-label="Dark mode" aria-pressed={theme === "dark"}
       title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+      <svg ref={icon} width="20" height="20" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"
         strokeLinejoin="round" aria-hidden="true">
         {theme === "dark" ? <>

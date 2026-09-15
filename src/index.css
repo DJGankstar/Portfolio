@@ -2020,3 +2020,18 @@ button {
   .site-header .nav-contact { padding-inline: 8px; }
   .site-header .nav-contact > span { display: none; }
 }
+
+/* Only palette properties crossfade: images, geometry and content entrances
+   remain untouched. Scoped to an explicit theme click, never initial loading. */
+@media (prefers-reduced-motion: no-preference) {
+  :root.theme-changing,
+  :root.theme-changing *,
+  :root.theme-changing *::before,
+  :root.theme-changing *::after {
+    transition-property: color, background-color, border-color, outline-color,
+      text-decoration-color, box-shadow, fill, stroke !important;
+    transition-duration: 300ms !important;
+    transition-timing-function: ease-in-out !important;
+    transition-delay: 0s !important;
+  }
+}
