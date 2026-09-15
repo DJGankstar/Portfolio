@@ -207,7 +207,7 @@ function RouteEffects() {
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
     // Animate only page changes, not filters, theme switches or section anchors.
     // Deep links land directly at their target without moving it afterwards.
-    if (!main?.animate || preference.matches || location.hash) return;
+    if (!main?.animate || preference.matches || location.hash || main.classList.contains("not-found")) return;
     const animation = main.animate(
       [{ opacity: 0.35, transform: "translateY(18px)" }, { opacity: 1, transform: "none" }],
       { duration: 800, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "none" },
@@ -1057,14 +1057,17 @@ function Privacy() {
 function NotFound() {
   return (
     <main id="main" tabIndex="-1" className="wrap section not-found">
-      <p className="eyebrow">404 / Not found</p>
+      <p className="error-code" aria-hidden="true">404<span>.</span></p>
+      <p className="eyebrow">Page not found</p>
       <h1>
-        This page took
-        <br />a wrong turn.
+        A little off course.
       </h1>
-      <Link className="button primary" to="/projects">
-        Back to the work <Arrow />
-      </Link>
+      <p className="page-intro">This page may have moved, or the link isn’t quite right.
+        Let’s get you back to somewhere useful.</p>
+      <div className="error-actions">
+        <Link className="button primary" to="/">Back home <span aria-hidden="true">↗</span></Link>
+        <Link className="text-link" to="/projects">Explore work <Arrow /></Link>
+      </div>
     </main>
   );
 }
