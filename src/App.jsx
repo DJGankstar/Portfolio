@@ -32,8 +32,8 @@ const mail = "mailto:mobeenk89@gmail.com";
 const descriptions = [
   [
     "bunkerify",
-    "Security, with a starting point.",
-    "A self-assessment platform that turns complex security questions into a clearer next step.",
+    "A security check for small businesses.",
+    "A security self-assessment with a risk breakdown, a website scan and recommendations.",
     "/images/bunkerify/after-desktop.png",
     "Security & AI",
     "Product design · Full-stack development",
@@ -41,8 +41,8 @@ const descriptions = [
   ],
   [
     "job-application-assistant",
-    "Less admin. More opportunity.",
-    "An AI-assisted resume workflow with private user workspaces and export-ready documents.",
+    "Less time rewriting resumes.",
+    "An app that adapts a resume to a job description using the experience already in it.",
     "/images/resume-tailor.png",
     "Applications",
     "Full-stack development · AI integration",
@@ -50,40 +50,40 @@ const descriptions = [
   ],
   [
     "local-llm-benchmark",
-    "Small models. Real tradeoffs.",
-    "An offline benchmark exploring speed, reliability and quality on a CPU-only machine.",
+    "Testing local AI on a CPU.",
+    "A comparison of three local models, measuring speed, reliability and answer quality.",
     null,
     "Security & AI",
     "Python · Evaluation design",
   ],
   [
     "cyber-content-bot",
-    "From security feeds to useful drafts.",
-    "A review-first content pipeline bringing vulnerability news and AI research into one dashboard.",
+    "Security news, ready to review.",
+    "A dashboard that gathers security news and drafts LinkedIn posts for review.",
     null,
     "Security & AI",
     "Full-stack development · Automation",
   ],
   [
     "llm-security-tester",
-    "Put model boundaries to the test.",
-    "An extensible test harness for exploring prompt injection and other LLM failure modes.",
+    "Testing how language models respond to attacks.",
+    "A tool for testing prompt injection, data leaks and other language-model weaknesses.",
     null,
     "Security & AI",
     "Application security · AI evaluation",
   ],
   [
     "web-vulnerability-scanner",
-    "Make findings easier to act on.",
-    "A web scanner that brings severity, evidence and remediation into a single interface.",
+    "Scan a website. See what needs fixing.",
+    "A website scanner that explains each finding, its severity and how to address it.",
     null,
     "Security & AI",
     "Application security · Full-stack development",
   ],
   [
     "incident-console",
-    "Order in the middle of an incident.",
-    "A production-support simulation, from initial triage to documented root-cause analysis.",
+    "From incident report to resolution.",
+    "A practice environment for managing incidents, tracking response times and recording what went wrong.",
     "/images/Production-Support-Console.png",
     "Applications",
     "Full-stack development · Workflow design",
@@ -91,8 +91,8 @@ const descriptions = [
   ],
   [
     "golden-hour-pilates",
-    "A stronger digital first impression.",
-    "A bold studio identity, translated into a more intuitive class-discovery and booking journey.",
+    "A new website for Golden Hour Pilates.",
+    "A studio website with class information, a live timetable and booking links.",
     "/images/golden-hour/after-desktop.png",
     "Websites",
     "UX design · Frontend development",
@@ -100,8 +100,8 @@ const descriptions = [
   ],
   [
     "jz-tech",
-    "A studio identity, built for the web.",
-    "An editorial website bringing brand, services and a clear enquiry journey together.",
+    "Building the JZ Tech website.",
+    "A website explaining the studio’s services, how projects run and how to get in touch.",
     "/images/jztech/desktop.png",
     "Websites",
     "Brand implementation · Web development",
@@ -109,8 +109,8 @@ const descriptions = [
   ],
   [
     "jzsm",
-    "Different needs. Clearer pathways.",
-    "A seven-page service website designed around clarity, accessibility and everyday usability.",
+    "Helping people find the right service.",
+    "Seven pages covering support services, cleaning and home maintenance.",
     "/images/jzsm/desktop.png",
     "Websites",
     "Information architecture · Web development",
@@ -118,8 +118,8 @@ const descriptions = [
   ],
   [
     "cancer-awareness-app",
-    "Useful information, closer to hand.",
-    "A cross-platform awareness app with educational content and privacy-conscious user journeys.",
+    "Cancer awareness on mobile.",
+    "A mobile app for cancer awareness information, reminders and educational content.",
     null,
     "Applications",
     "Mobile development",
@@ -133,9 +133,9 @@ const work = allWork.map((item) => {
 work.push({
   title: "Khan Security Testing",
   slug: "khan-security-testing",
-  headline: "Security expertise, clearly communicated.",
+  headline: "Explaining security testing without the jargon.",
   summary:
-    "A security-services website designed to make testing, scope and the next step easier to understand.",
+    "A website covering security reviews, the testing process and an example report.",
   image: "/images/khan-security-testing.png",
   type: "Websites",
   role: "Website design · Frontend development",
@@ -240,7 +240,7 @@ function RouteEffects() {
           : location.pathname === "/privacy"
             ? "Privacy"
           : location.pathname === "/"
-            ? "Developer & creative problem solver"
+            ? "Software developer"
             : "Page not found";
     document.title = `${pageName} | Mobeen Khan`;
     document
@@ -248,7 +248,7 @@ function RouteEffects() {
       ?.setAttribute(
         "content",
         project?.summary ||
-          "Mobeen Khan is an Australia-based developer building thoughtful websites, full-stack applications and practical security tools. Explore selected work and get in touch.",
+          "Mobeen Khan is a developer based in Australia. See his websites, full-stack apps and security projects, or get in touch.",
       );
     const target = location.hash
       ? document.getElementById(location.hash.slice(1))
@@ -501,17 +501,16 @@ function Home() {
           <div className="hero-copy">
             <h1 id="hero-title">
               <span className="hero-primary">
-                Thoughtful
+                Websites
                 <br />
-                interfaces.
+                and apps.
               </span>
-              <span className="hero-secondary">Solid engineering.</span>
+              <span className="hero-secondary">From design to code.</span>
             </h1>
             <div className="hero-bottom">
               <p>
-                I’m Mobeen Khan. I turn complex problems into websites and
-                applications that feel simple to use—and are carefully built
-                underneath.
+                I’m Mobeen Khan, a developer based in Australia. I build websites,
+                full-stack apps and security tools.
               </p>
               <div className="hero-actions">
                 <SectionLink className="button primary" to="/#selected-work">
@@ -531,7 +530,7 @@ function Home() {
         </div>
         <div className="hero-foot">
           <span>Websites / Applications / Security & AI</span>
-          <span>Good work, from first idea to final detail.</span>
+          <span>Designed, built and tested by me.</span>
         </div>
       </section>
       <section
@@ -543,9 +542,9 @@ function Home() {
         <div className="section-heading">
           <div>
             <h2 id="selected-title">
-              Built with
+              Some of
               <br />
-              <span>purpose.</span>
+              <span>my work.</span>
             </h2>
           </div>
           <Link className="text-link" to="/projects">
@@ -569,28 +568,28 @@ function Home() {
           <div>
             <SectionLabel number="02">How I work</SectionLabel>
             <h2 id="approach-title">
-              The details make
+              From the idea
               <br />
-              the difference<span>.</span>
+              to the build<span>.</span>
             </h2>
             <p>
-              Clear thinking, considered design and engineering that goes beyond
-              the happy path.
+              I start by understanding what people need to do, then work through
+              the design, code and testing.
             </p>
           </div>
           <div className="principles">
             {[
               [
-                "Understand the real problem.",
-                "Start with the people using it, the task they need to finish, and the constraints that actually matter.",
+                "Work out what’s needed.",
+                "I ask who will use it, what they need help with and what we can realistically build.",
               ],
               [
-                "Make the complex feel simple.",
-                "Give content a clear hierarchy. Make the next step obvious. Build for small screens and different ways of navigating.",
+                "Make it easy to use.",
+                "I organise the content, keep navigation straightforward and check how it works on small screens and with a keyboard.",
               ],
               [
-                "Build it properly.",
-                "Think through authentication, error states, accessibility and maintainability—not just how the homepage looks.",
+                "Check more than the homepage.",
+                "I test logins, error messages and accessibility, and keep the code manageable for whoever works on it next.",
               ],
             ].map(([title, text], i) => (
               <article
@@ -620,24 +619,23 @@ function Home() {
             height="1254"
             loading="lazy"
           />
-          <span>Developer. Curious by default.</span>
+          <span>Mobeen Khan · Developer</span>
         </div>
         <div data-scroll-motion="copy">
           <SectionLabel number="03">A little about me</SectionLabel>
           <h2 id="about-title">
-            A builder with a<br />
-            security mindset.
+            Software development<br />
+            and cybersecurity.
           </h2>
           <p>
-            I’m an Australia-based developer working across full-stack
-            applications, websites and practical security tools. I like
-            understanding how things work—and making them work better for the
-            people using them.
+            I work on websites, full-stack apps and security tools.
+            I enjoy figuring out how things work, especially when I can use
+            that knowledge to fix something or build something useful.
           </p>
           <p>
-            My background spans software engineering and cybersecurity. That
-            combination shapes how I approach everything from a booking journey
-            to an API.
+            I studied software engineering and cybersecurity, and I’m now
+            working towards a master’s in cybersecurity. I bring both into my
+            projects, from booking pages to APIs.
           </p>
           <Link className="text-link" to="/about">
             My background & experience <Arrow />
@@ -660,9 +658,9 @@ function Contact() {
         <SectionLabel number="04">What’s next?</SectionLabel>
         <div className="contact-heading" data-scroll-motion="copy">
           <h2 id="contact-title">
-            Let’s make
+            Have something
             <br />
-            something good<span>.</span>
+            in mind<span>?</span>
           </h2>
           <span className="contact-spark" aria-hidden="true">
             ↗
@@ -676,7 +674,7 @@ function Contact() {
             <h3>
               <span className="contact-title">Have a project in mind?</span> <Arrow />
             </h3>
-            <p>Let’s talk about your website, application or next idea.</p>
+            <p>Tell me what you’re working on and where you need a hand.</p>
           </a>
           <a
             href={`${mail}?subject=Let%E2%80%99s%20talk%20about%20an%20opportunity`}
@@ -729,11 +727,11 @@ function Projects() {
     <main id="main" tabIndex="-1" className="wrap archive section">
       <SectionLabel number="01">The project archive</SectionLabel>
       <h1>
-        Ideas, made real<span>.</span>
+        Projects I’ve built<span>.</span>
       </h1>
       <p className="page-intro">
-        Websites, useful applications and experiments in security and AI. A
-        closer look at what I build and how I think.
+        Business websites, personal apps and experiments in security and AI.
+        Pick a project to see how I built it.
       </p>
       <div className="filters" role="group" aria-label="Filter projects">
         {["All work", "Websites", "Applications", "Security & AI"].map(
@@ -798,15 +796,15 @@ function About() {
       <section className="wrap section about-page">
         <SectionLabel number="02">Behind the work</SectionLabel>
         <h1>
-          Curiosity meets
+          Hi, I’m
           <br />
-          <span>follow-through.</span>
+          <span>Mobeen.</span>
         </h1>
         <div className="about-intro">
           <p className="page-intro">
-            I’m Mobeen, a developer based in Australia. I enjoy joining the dots
-            between a clear interface, useful functionality and the engineering
-            that makes it dependable.
+            I’m a developer based in Australia with a background in software
+            engineering and cybersecurity. My work includes business websites,
+            full-stack apps and security projects.
           </p>
           <img
             src="/images/mobeen-khan-cartoon.png"
@@ -853,8 +851,8 @@ function About() {
         </div>
         <section className="toolkit">
           <SectionLabel number="03">The toolkit</SectionLabel>
-          <h2>Tools follow the problem.</h2>
-          <p>The project case studies show where and why I use them.</p>
+          <h2>What I work with.</h2>
+          <p>You can see how I use these in the project write-ups.</p>
           {[
             ...skillCategories,
             { name: "Security tools & practices", items: cybersecurityTools },
@@ -1021,7 +1019,7 @@ function ProjectDetail() {
         </article>
       </div>
       <div className="case-end">
-        <h2>Another angle on the work.</h2>
+        <h2>Take a look at another project.</h2>
         <Link className="button primary" to="/projects">
           Explore all projects <Arrow />
         </Link>

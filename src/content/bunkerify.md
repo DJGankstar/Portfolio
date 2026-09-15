@@ -1,31 +1,19 @@
-## The problem
+## What I built
 
-Small businesses and founders can struggle to turn security terminology into a practical starting point. Bunkerify brings self-assessment, a personalised risk breakdown and next steps into one product.
+Bunkerify helps small businesses work through a security self-assessment and see where they could improve. I built the application, scoring system, login, reports and website-scanner integration.
 
-## My role
+## How it works
 
-I built the full-stack application, assessment scoring, authentication, reporting and web-scanning integration.
+The scoring engine maps 19 questions to the ACSC Essential Eight categories and calculates weighted maturity levels. These results are guidance based on the user's answers, not a certification or an independent audit.
 
-## Important decisions
+After the assessment, users can view their results, receive an HTML email report and book a consultation. Next.js handles the application, Supabase handles authentication and storage, and SendGrid sends the emails. The site is deployed on Vercel.
 
-### Translate answers into useful guidance
+## Adding the website scanner
 
-A custom scoring engine maps 19 assessment questions to Essential Eight categories and calculates weighted maturity levels. The output is intended as a starting point for discussion, not a certification or an independent audit.
+The scanner adds technical findings to the results page and email report. New users provide an email address before scanning. Returning users who are signed in can go straight to the scan.
 
-### Connect the whole journey
+The assessment and scanner check different things. Neither can establish that a business is secure on its own.
 
-The application connects the assessment to a results page, an automated HTML email report and a consultation-booking path. Supabase provides authentication and data storage, with SendGrid handling transactional delivery.
+## The result
 
-### Bring findings into context
-
-An integrated web scanner adds technical findings to the assessment results and email report. New users encounter an email gate, while returning authenticated users have a direct scanning path.
-
-## Architecture at a glance
-
-Assessment answers → scoring engine → stored results → personalised report and next steps.
-
-The product uses Next.js, Supabase, SendGrid and Vercel. The assessment and scanner address different kinds of evidence; neither is presented here as proof that a business is secure.
-
-## Outcome
-
-A deployed product connecting assessment, reporting and follow-up in one workflow. This case study describes the implementation; it does not claim unmeasured customer adoption or commercial results.
+The deployed app brings the assessment, scan results, reports and follow-up into one place.

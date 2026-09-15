@@ -1,55 +1,33 @@
-## Overview
+## What I built
 
-JZ Supports & Maintenance provides practical assistance for people and their homes across NDIS supports, injury recovery, domestic assistance, cleaning, lawns, and general maintenance.
+JZ Supports & Maintenance provides support and home-maintenance services, including NDIS supports, injury recovery, cleaning and lawn care.
 
-I designed and built a seven-route production website that makes the service range easier to understand while maintaining clear boundaries around funding, eligibility, and unconfirmed enquiry details.
+I designed and built a seven-page website so visitors could find the service relevant to them. My work included planning the pages, writing and organising content, adapting components, development, accessibility checks and deployment.
 
-## The problem
+## Organising the services
 
-The business serves audiences with different needs, funding arrangements, and levels of urgency. The website therefore needed to:
+The site has separate pages for NDIS supports, injury and recovery assistance, cleaning, lawns and maintenance, company information and contact. The homepage introduces the main services and explains how to get started.
 
-- separate support pathways without fragmenting the brand
-- explain private, NDIS, and insurer-funded possibilities carefully
-- present indoor and outdoor services clearly
-- support people using keyboard, touch, zoom, or reduced-motion preferences
-- remain honest while contact and evidence details were still being confirmed
+Funding and eligibility wording needed care. I kept it conditional rather than promising that a service would be covered. Reference photos were not presented as completed client work, and enquiry handling stayed disabled while details were unconfirmed.
 
-## My role
+## Working with components
 
-I handled discovery, sitemap design, content hierarchy, visual direction, component selection, frontend implementation, accessibility remediation, responsive QA, metadata, deployment support, and documentation.
+I started with React components from Relume and adapted them in the repository. That included fixing framework and accessibility issues and combining them with shadcn, Radix UI and the site's own styles. The finished site doesn't need Relume to run.
 
-## Design approach
+## Under the hood
 
-### Organise the service model around user pathways
+- Next.js App Router, React, TypeScript and Tailwind CSS
+- Shared navigation and footer across seven pages
+- shadcn, Radix UI, Lucide, Motion and Embla
+- Manrope headings and Atkinson Hyperlegible body text
+- Keyboard navigation, skip link, visible focus states and reduced-motion support
+- Local images with documented sources
+- Australian search metadata, canonical URLs and social previews
+- Lint, type, build and responsive browser checks
+- Vercel hosting with custom-domain support
 
-The site separates NDIS supports, injury and recovery assistance, cleaning, lawns and maintenance, about, and contact content into dedicated routes. The homepage provides four clear entry points and an explained process before directing users deeper.
+## The result
 
-### Build trust through clarity
+The services have their own pages, and the shared components make future updates easier. Contact details, business information and photography can be updated without rebuilding the site.
 
-Funding and eligibility statements are presented as conditional guidance rather than promises. The site also avoids presenting reference photography as completed client work and keeps unconfirmed enquiry handling disabled instead of collecting data prematurely.
-
-### Adapt proven components without losing ownership
-
-Relume Library MCP supplied genuine React component foundations. I vendored and adapted those components locally, resolved framework and accessibility issues, and integrated them with shadcn, Radix, and project-specific design tokens. Relume is not required at runtime.
-
-## Implementation
-
-- Next.js App Router with React, TypeScript, and Tailwind CSS
-- seven production routes with shared navigation and footer architecture
-- genuine Relume component foundations vendored into the repository
-- shadcn, Radix UI, Lucide icons, Motion, and Embla foundations
-- Manrope headings and Atkinson Hyperlegible body typography
-- accessible skip link, navigation, FAQ, focus states, and reduced-motion behaviour
-- responsive service cards, photo bands, process sections, and contact states
-- local runtime imagery with documented reference-image sources
-- Australian metadata, canonical URLs, and social sharing metadata
-- lint, type checking, production build, and browser-based responsive QA
-- Vercel deployment with custom-domain support
-
-## Outcome
-
-The launched website turns a broad service offering into a structured, approachable digital experience. It establishes a reusable component system that can accept final contact details, business evidence, and production photography without rebuilding the site architecture.
-
-No unmeasured enquiries, bookings, or commercial outcomes are claimed.
-
-[View the live JZSM website](https://www.jzsm.com.au)
+[Visit JZ Supports & Maintenance](https://www.jzsm.com.au)

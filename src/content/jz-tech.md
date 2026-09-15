@@ -1,56 +1,34 @@
-## Overview
+## What I built
 
-JZ Tech is an Australian independent web studio founded in the Illawarra. The website needed to establish a credible service business while also demonstrating the strategy, design quality, technical discipline, and production standards offered to clients.
+JZ Tech is an independent web studio founded in the Illawarra. I built its website to explain the services, show how projects are delivered and give businesses a way to get in touch.
 
-I developed the brand system into a production Next.js website, shaped the information architecture and copy, implemented the interface, created the quality gates, and supported the production launch.
+My work covered the page structure, copy, design, frontend development, accessibility, search metadata, build checks and launch.
 
-## The problem
+## Turning the brand into a website
 
-As a new studio, JZ Tech needed to communicate several ideas quickly:
+I used the studio's Dark Blue C, White, Gray Whale and Near Black palette, along with its spiral mark. Shared colour and type tokens keep the styling consistent and make it easier to update.
 
-- what services the studio provides
-- how the delivery process works
-- why a custom website creates business value
-- what happens after launch
-- how an interested business can begin a conversation
+The homepage covers services, a five-step delivery process, ongoing maintenance and FAQs. I organised it around the questions someone would have before starting a project.
 
-The result also needed to feel distinctive enough to act as evidence of the studio's own design capability.
+## The hero animation
 
-## My role
+The desktop hero uses a compressed local video. Static alternatives cover mobile, reduced-motion and data-saving preferences, so visitors don't need to play the video to use the page.
 
-I handled positioning, information architecture, copy direction, interface design, frontend development, responsive behaviour, accessibility, technical SEO, quality automation, deployment support, and documentation.
+## Under the hood
 
-## Design approach
+- Next.js App Router, React, TypeScript and Tailwind CSS
+- Shared brand tokens in JSON, CSS and Tailwind
+- Automated WCAG contrast checks
+- Keyboard navigation, skip link and visible focus states
+- Reduced-motion support and touch-friendly controls
+- Australian organisation structured data and local metadata
+- GitHub Actions checks for lint, types, contrast and production builds
+- Vercel hosting and domain setup
 
-### Turn the brand foundation into a working system
+I checked the layouts at mobile, tablet, laptop and desktop sizes.
 
-The interface applies JZ Tech's Dark Blue C, White, Gray Whale, and Near Black identity through reusable semantic tokens. A permanent dark theme, strong typography, measured rules, and the approved spiral mark create a precise editorial tone.
+## The result
 
-### Lead with business clarity
+The live site explains what JZ Tech offers and how to make an enquiry. It also gives the studio a working example of its design and development approach.
 
-The homepage progresses from the central value proposition into studio positioning, services, a five-step delivery process, ongoing maintenance, principles, FAQs, and a direct enquiry action. Each section answers a practical buying question rather than existing only for decoration.
-
-### Use motion responsibly
-
-The cinematic hero supports the visual message without controlling access to content. Desktop motion uses a compressed local asset, while poster, mobile, reduced-motion, and data-saving fallbacks preserve performance and user choice.
-
-## Implementation
-
-- Next.js App Router with React, TypeScript, and Tailwind CSS
-- portable JSON, CSS, and Tailwind brand tokens
-- automated WCAG contrast validation during production builds
-- responsive cinematic hero with muted autoplay and static fallbacks
-- accessible navigation, FAQ interaction, skip link, and visible focus states
-- reduced-motion support and minimum mobile touch targets
-- Australian organisation structured data and localised metadata
-- responsive validation across mobile, tablet, laptop, and desktop widths
-- GitHub Actions quality pipeline covering lint, type checking, contrast, and production build
-- Vercel deployment and domain handoff
-
-## Outcome
-
-The live website gives JZ Tech a clear sales narrative and a production-quality example of its own work. It combines strategy, copy, branding, responsive design, accessibility, SEO, and deployment into one coherent studio presence.
-
-No unmeasured lead or conversion claims are made.
-
-[View the live JZ Tech website](https://www.jztech.com.au)
+[Visit JZ Tech](https://www.jztech.com.au)

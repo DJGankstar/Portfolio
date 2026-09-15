@@ -1,57 +1,40 @@
-## Overview
+## What needed changing
 
-Golden Hour Pilates already had a distinctive identity. The opportunity was not to replace it, but to turn that identity into a clearer digital customer journey.
+Golden Hour Pilates already had a recognisable look. I wanted to keep that while making it easier to find a class, check the timetable and book.
 
-I audited the studio's existing Squarespace homepage, designed a conversion-focused alternative, rebuilt it as a responsive React application, and supported its launch as the studio's production website.
+I reviewed the existing Squarespace homepage, designed a replacement and rebuilt it in React. I also helped launch it as the studio's production website.
 
-## The problem
+The original page had a few problems:
 
-The original page had memorable colours and a visible introductory offer, but several usability issues weakened the experience:
+- The mobile headline was cropped.
+- Justified body text left awkward gaps between words.
+- Important class and booking information was hard to pick out.
+- New visitors had limited guidance on choosing a class.
+- Some contact details weren't clickable.
+- Headings and local search metadata needed work.
 
-- the homepage behaved more like a brand poster than a guided booking journey
-- the mobile headline was heavily cropped
-- dense, justified body copy created awkward spacing
-- key information lacked a clear visual hierarchy
-- class discovery and beginner reassurance were limited
-- contact details were not consistently actionable
-- heading structure and local search signals needed improvement
+## My part
 
-## My role
+I handled the site review, page structure, design, development, copy edits, booking integration, accessibility checks and testing.
 
-I handled the UX audit, information architecture, interface design, responsive implementation, accessibility pass, content refinement, integration work, testing, and documentation.
+## Keeping the studio's identity
 
-## Design approach
+I used Golden Hour's official logos and Tangerine, Mahogany, Cream and White palette. The owner supplied the studio photography, which replaced the early concept images.
 
-### Preserve the brand
+## Making booking easier
 
-I used the official Golden Hour logo system and exact palette: Tangerine, Mahogany, Cream, and White. Owner-supplied studio photography replaced early concept artwork.
+The page explains the classes and introductory offer, then gives visitors the live schedule, first-visit guidance, location and FAQs. A mobile booking bar keeps the timetable and offer within reach.
 
-### Build a journey
+I also added a class matcher, an FAQ accordion, a map and direct links for calls, email and social accounts.
 
-The redesign guides visitors from value proposition to class fit, introductory offer, live schedule, first-visit guidance, location, FAQs, and direct contact actions. Later iterations strengthened the introductory-offer journey, calls to action, class information, and studio details.
+## Building and testing it
 
-### Design mobile-first
+The site uses React, Vite and responsive CSS. I checked the navigation and controls on small screens and with a keyboard, added reduced-motion support, and included descriptive image text and local-business metadata.
 
-Layouts collapse deliberately, controls remain touch-friendly, content stays readable, and the navigation, accordions, class matcher, and contact actions work without desktop assumptions.
+The finished site runs on Vercel with the studio's custom domain.
 
-## Implementation
+## The result
 
-- component-based React and Vite architecture
-- responsive CSS with reusable brand tokens
-- interactive class-intent matcher
-- accessible animated FAQ accordion
-- class schedule and booking integration
-- persistent mobile quick-booking bar for timetable and offer access
-- embedded map and direct directions action
-- click-to-call, email, Instagram, and Facebook actions
-- semantic headings, metadata, local-business structured data, and descriptive alternative text
-- reduced-motion support and keyboard focus states
-- production deployment through Vercel with a custom domain
+Visitors can browse classes, check the timetable and book without losing the studio's original look. The gallery above compares the old Squarespace homepage with the redesign.
 
-## Outcome
-
-The launched website is a fuller, more purposeful studio experience. It retains Golden Hour's bold visual personality while making the offer, timetable, location, beginner guidance, and next actions easier to understand across desktop and mobile.
-
-The comparison above preserves the original Squarespace homepage as the baseline alongside captured views of the redesign. No unmeasured conversion gains are claimed.
-
-[View the live Golden Hour Pilates website](https://www.goldenhourpilates.com.au)
+[Visit Golden Hour Pilates](https://www.goldenhourpilates.com.au)

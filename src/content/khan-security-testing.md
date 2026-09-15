@@ -1,29 +1,21 @@
-## The problem
+## What I built
 
-A SaaS team evaluating security testing needs to understand the scope, the process and what it will receive. Khan Security Testing's website brings those questions into one clear journey.
+Khan Security Testing's website explains what a security review covers, how the testing works and what the report looks like.
 
-## My contribution
+I designed and built the frontend with React, TypeScript and Tailwind CSS. This project covers the website, not a client security engagement.
 
-Website design and frontend implementation: translating the security-services positioning into a responsive React, TypeScript and Tailwind CSS interface.
+## Answering the practical questions
 
-## Important decisions
+The site introduces web application, API and cloud architecture reviews, then explains the testing method, reporting and follow-up. Visitors can look at a sample report before making an enquiry. The example findings are labelled as demonstrations, not client results.
 
-### Organise around the buyer's questions
+## Explaining the process
 
-The site explains the intended audience before introducing web application, API and cloud architecture reviews. It then connects those services to methodology, reporting and follow-up.
+The process runs from agreeing the scope to testing, reporting, help with fixes and retesting. FAQs and enquiry links sit alongside the service information so visitors can follow up on anything that's unclear.
 
-### Show what a deliverable looks like
+## The design
 
-A sample-report section lets visitors inspect the structure of a review before making an enquiry. Demonstration findings are distinguished from client case studies.
+I used a dark background with blue and gold accents. Short sections and consistent layouts help keep the technical information readable on desktop and mobile.
 
-### Make the process understandable
+## The result
 
-A step-by-step journey moves from agreeing scope through testing, reporting, remediation support and retesting. Clear enquiry actions sit alongside FAQs and engagement information.
-
-## Visual direction
-
-A dark interface, restrained blue and gold accents, and a visual review workflow give the site a technical character. Short sections and consistent calls to action keep the service explanation readable across screen sizes.
-
-## Outcome
-
-A public-facing security-services website connecting service scope, methodology, sample deliverables and enquiries. The work shown here is the website design and implementation.
+A live website where visitors can read about the services, inspect an example report and get in touch.

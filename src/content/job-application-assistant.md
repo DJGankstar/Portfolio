@@ -1,30 +1,31 @@
-## The Problem
+## Why I built it
 
-Job seekers spend 30-60 minutes rewriting their resume for every application - adjusting bullet points, reordering skills, tweaking the summary - while trying to keyword-match the job description without overstating experience.
+Tailoring a resume involves a lot of repeat work: choosing relevant projects, reordering skills and rewriting the summary. I built Job Application Assistant to help with that without inventing experience.
 
-I built Job Application Assistant to automate that workflow. Users paste a job description, get a job-fit assessment with a confidence score, and download a tailored resume and cover letter - all generated from a single canonical resume source with strict guardrails against fabrication.
+Users paste a job description, review a fit assessment and generate a resume and cover letter from a structured source resume.
 
-## How It Works
+## How it works
 
-The system runs a multi-stage pipeline. First, it classifies the job into a role type (application security, DevSecOps, penetration testing, software engineering, AI/ML, or graduate) using AI classification with a deterministic keyword-scoring fallback.
+The app classifies the job by role, including software engineering, application security, DevSecOps, penetration testing, AI/ML and graduate roles. If AI classification fails, it uses keyword scoring.
 
-Based on classification, it selects a role-specific strategy controlling which projects appear, how skills are ordered, what the summary says, and whether the resume leads with security or full-stack work.
+Each role has a strategy for project selection, skill order, layout and summary wording. Resume bullet points are stored in JSON with an importance score from 0 to 3, a core flag and tags. The generator uses those values and the job description to select relevant content. Playwright converts the HTML output to PDF.
 
-The resume is stored as structured JSON with weighted bullet points - each bullet has an importance score (0-3), a core flag, and tags. The generator selects bullets by importance first, then filters by JD keyword relevance. Playwright renders HTML to PDF. The full output is returned in under 5 seconds.
+## Keeping the output grounded
 
-## Key Technical Decisions
+The app checks terms in the generated tagline against the source resume and uses a default if a term isn't supported. Terms containing dots, such as ASP.NET, needed special handling. These checks help constrain the output, but the generated documents still need a review.
 
-1. No-hallucination validation - checks every term in the AI-generated tagline against the source resume, falls back to a safe default if any term does not exist. Dot-separated terms like ASP.NET required special handling.
-2. Dual AI provider with deterministic fallback - tries Claude first, can fall back to OpenAI, and degrades to deterministic heuristics if both fail.
-3. Role-aware strategy engine - hardcoded strategy mappings per role type controlling project selection (top 4 per role), skill ordering, section layout, bullet filtering, and professional summary wording.
-4. Multi-user SaaS architecture - Supabase auth, per-user generation history, monthly quota of 10 enforced server-side, row-level security policies.
+## Handling failures and multiple users
 
-## Security Pipeline
+The AI integration tries Claude first, can fall back to OpenAI and uses rule-based logic if both fail. Role strategies select up to four projects and control how the resume is organised.
 
-GitHub Actions CI/CD with Bandit, Semgrep, Gitleaks, and pip-audit with fail-gate on HIGH findings.
+Supabase handles authentication and per-user generation history. The server enforces a monthly limit of 10 generations, and row-level security separates users' data.
 
-## What I Would Improve
+## Security checks
 
-- 0% test coverage (would use TDD from day one)
-- Move from filesystem Flask sessions to Redis
-- Add structured logging
+GitHub Actions runs Bandit, Semgrep, Gitleaks and pip-audit. High-severity findings block the pipeline.
+
+## What I'd improve
+
+- Add automated test coverage for the generation pipeline.
+- Move filesystem-backed Flask sessions to Redis.
+- Add structured logging to help diagnose failures.
